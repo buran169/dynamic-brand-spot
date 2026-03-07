@@ -9,7 +9,7 @@ import type { services } from "@/lib/content";
 type Service = (typeof services)[number];
 
 export function ServiceCard({ service }: { service: Service }) {
-  const Icon = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[service.icon] || Icons.Box;
+  const Icon = (Icons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[service.icon] || Icons.Box;
 
   return (
     <motion.div
