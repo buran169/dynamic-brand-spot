@@ -101,11 +101,13 @@ const ContactPage = () => {
                   <div>
                     <Input
                       type="email"
+                      inputMode="email"
                       placeholder={t("contact.email")}
                       value={form.email}
                       onChange={(e) => update("email", e.target.value)}
-                      className="rounded-xl"
+                      className="rounded-xl h-12"
                       aria-label={t("contact.email")}
+                      autoComplete="email"
                     />
                     {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
                   </div>
