@@ -12,10 +12,10 @@ export const siteConfig = {
 };
 
 export const socialLinks = {
-  discord: { url: "https://discord.gg/your-invite", label: "Discord", username: "yourname" },
-  telegram: { url: "https://t.me/yourusername", label: "Telegram" },
-  facebook: { url: "https://facebook.com/yourpage", label: "Facebook" },
-  whatsapp: { url: "https://wa.me/8801XXXXXXXXX", label: "WhatsApp" },
+  discord: { url: "https://discord.gg/wAdhm2R3a", label: "Discord", username: "Burhan10" },
+  telegram: { url: "https://t.me/Ladka_ladkii", label: "Telegram" },
+  facebook: { url: "https://www.facebook.com/bullavaii01", label: "Facebook" },
+  whatsapp: { url: "https://wa.me/8801342133127", label: "WhatsApp" },
 };
 
 export const navLinks = [
