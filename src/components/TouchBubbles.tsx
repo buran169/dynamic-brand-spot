@@ -1,40 +1,55 @@
 import { useEffect, useCallback, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-interface Bubble {
+interface Ripple {
+  id: number;
+  x: number;
+  y: number;
+}
+
+interface Particle {
   id: number;
   x: number;
   y: number;
   size: number;
+  angle: number;
 }
 
-let bubbleId = 0;
+let rippleId = 0;
 
 export function TouchBubbles() {
-  const [bubbles, setBubbles] = useState<Bubble[]>([]);
+  const [ripples, setRipples] = useState<Ripple[]>([]);
+  const [particles, setParticles] = useState<Particle[]>([]);
 
-  const createBubble = useCallback((x: number, y: number) => {
-    const count = 3 + Math.floor(Math.random() * 3);
-    const newBubbles: Bubble[] = [];
+  const createEffect = useCallback((x: number, y: number) => {
+    const id = rippleId++;
+    // Ripple ring
+    setRipples((prev) => [...prev, { id, x, y }]);
+    setTimeout(() => setRipples((prev) => prev.filter((r) => r.id !== id)), 700);
+
+    // Burst particles
+    const count = 4 + Math.floor(Math.random() * 3);
+    const newParticles: Particle[] = [];
     for (let i = 0; i < count; i++) {
-      newBubbles.push({
-        id: bubbleId++,
-        x: x + (Math.random() - 0.5) * 40,
-        y: y + (Math.random() - 0.5) * 40,
-        size: 6 + Math.random() * 14,
+      newParticles.push({
+        id: rippleId++,
+        x,
+        y,
+        size: 3 + Math.random() * 5,
+        angle: (360 / count) * i + (Math.random() - 0.5) * 30,
       });
     }
-    setBubbles((prev) => [...prev, ...newBubbles]);
+    setParticles((prev) => [...prev, ...newParticles]);
     setTimeout(() => {
-      setBubbles((prev) => prev.filter((b) => !newBubbles.find((nb) => nb.id === b.id)));
-    }, 800);
+      setParticles((prev) => prev.filter((p) => !newParticles.find((np) => np.id === p.id)));
+    }, 600);
   }, []);
 
   useEffect(() => {
-    const handleClick = (e: MouseEvent) => createBubble(e.clientX, e.clientY);
+    const handleClick = (e: MouseEvent) => createEffect(e.clientX, e.clientY);
     const handleTouch = (e: TouchEvent) => {
       const touch = e.touches[0];
-      if (touch) createBubble(touch.clientX, touch.clientY);
+      if (touch) createEffect(touch.clientX, touch.clientY);
     };
 
     window.addEventListener("click", handleClick);
@@ -43,27 +58,44 @@ export function TouchBubbles() {
       window.removeEventListener("click", handleClick);
       window.removeEventListener("touchstart", handleTouch);
     };
-  }, [createBubble]);
+  }, [createEffect]);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999]">
       <AnimatePresence>
-        {bubbles.map((b) => (
+        {/* Ripple rings */}
+        {ripples.map((r) => (
           <motion.div
-            key={b.id}
-            initial={{ opacity: 0.7, scale: 0.3, x: b.x - b.size / 2, y: b.y - b.size / 2 }}
-            animate={{
-              opacity: 0,
-              scale: 1.5,
-              x: b.x - b.size / 2 + (Math.random() - 0.5) * 60,
-              y: b.y - b.size / 2 - 30 - Math.random() * 50,
-            }}
+            key={`r-${r.id}`}
+            initial={{ opacity: 0.5, scale: 0, x: r.x - 25, y: r.y - 25 }}
+            animate={{ opacity: 0, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 + Math.random() * 0.3, ease: "easeOut" }}
-            style={{ width: b.size, height: b.size, position: "absolute" }}
-            className="rounded-full bg-gradient-to-br from-primary/40 to-accent/30 backdrop-blur-[1px]"
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            style={{ position: "absolute", width: 50, height: 50 }}
+            className="rounded-full border border-primary/30"
           />
         ))}
+        {/* Burst particles */}
+        {particles.map((p) => {
+          const rad = (p.angle * Math.PI) / 180;
+          const dist = 25 + Math.random() * 20;
+          return (
+            <motion.div
+              key={`p-${p.id}`}
+              initial={{ opacity: 0.8, scale: 1, x: p.x - p.size / 2, y: p.y - p.size / 2 }}
+              animate={{
+                opacity: 0,
+                scale: 0.3,
+                x: p.x - p.size / 2 + Math.cos(rad) * dist,
+                y: p.y - p.size / 2 + Math.sin(rad) * dist,
+              }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              style={{ width: p.size, height: p.size, position: "absolute" }}
+              className="rounded-full bg-primary/30"
+            />
+          );
+        })}
       </AnimatePresence>
     </div>
   );

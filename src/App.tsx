@@ -72,7 +72,6 @@ const App = () => (
           </main>
           <Footer />
           <BackToTop />
-          <FloatingContact />
           <ChatAssistant />
           <PWAInstallPrompt />
           <MobileCTABar />
