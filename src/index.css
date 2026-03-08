@@ -204,7 +204,7 @@ a:active, button:active, [role="button"]:active {
 }
 .badge-interactive:hover {
   transform: scale(1.06) translateY(-1px);
-  box-shadow: 0 4px 12px -4px hsl(var(--primary) / 0.15);
+  box-shadow: 0 4px 12px -4px hsl(var(--accent) / 0.2);
 }
 
 /* Global card/section hover lift — applies to any bordered container */
