@@ -215,6 +215,40 @@ export const testimonials = [
     text: "Our server runs smoother than ever. The admin tools pack saved us hours of work every week.",
     rating: 5,
   },
+  {
+    name: "Lisa T.",
+    role: "Small Business Owner",
+    text: "My website looks incredible and loads super fast. Shahriar understood my vision perfectly from day one.",
+    rating: 5,
+  },
+  {
+    name: "Mike D.",
+    role: "Gaming Community Manager",
+    text: "The Discord setup was beyond what I expected. Automation, moderation, everything works seamlessly.",
+    rating: 5,
+  },
+  {
+    name: "Nadia H.",
+    role: "Content Creator",
+    text: "Amazing thumbnails and brand kit! My channel looks so much more professional now. Great turnaround time.",
+    rating: 5,
+  },
+];
+
+export const strengths = [
+  { icon: "Rocket", title: "Fast Delivery", desc: "Projects delivered on time, every time" },
+  { icon: "Gem", title: "Premium Design", desc: "Pixel-perfect, modern aesthetics" },
+  { icon: "Code2", title: "Custom Development", desc: "Tailored solutions, not templates" },
+  { icon: "LifeBuoy", title: "Reliable Support", desc: "Post-delivery care included" },
+];
+
+export const serviceComparison = [
+  { feature: "Custom Design", web: true, discord: false, samp: false, design: true },
+  { feature: "Performance Optimization", web: true, discord: true, samp: true, design: false },
+  { feature: "Ongoing Support", web: true, discord: true, samp: true, design: false },
+  { feature: "Source Code Included", web: true, discord: true, samp: true, design: true },
+  { feature: "Revision Rounds", web: "2", discord: "2", samp: "1", design: "3" },
+  { feature: "Delivery Time", web: "3-7 days", discord: "2-5 days", samp: "2-5 days", design: "1-3 days" },
 ];
 
 export const aboutTimeline = [
