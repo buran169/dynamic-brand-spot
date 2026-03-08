@@ -132,67 +132,70 @@ const Index = () => {
               </motion.p>
 
               <motion.div
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
               >
-                {/* Hire Me — primary CTA */}
+                {/* Hire Me */}
                 <motion.div
-                  whileHover={{ scale: 1.06, y: -3 }}
-                  whileTap={{ scale: 0.92 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 14 }}
+                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 18 }}
                   className="w-full sm:w-auto"
                 >
-                  <Button asChild size="lg" className="rounded-full px-10 h-13 text-sm font-bold w-full sm:w-auto relative overflow-hidden group bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] transition-[background-position] duration-500 border-0 shadow-[0_0_30px_-6px_hsl(var(--accent)/0.4)] hover:shadow-[0_0_40px_-4px_hsl(var(--accent)/0.5)]">
-                    <Link to="/contact">
-                      <span className="relative z-10 flex items-center gap-2.5 text-white">
-                        <motion.span
-                          animate={{ rotate: [0, 15, -15, 0] }}
-                          transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                        >
-                          <Sparkles className="h-4 w-4" />
-                        </motion.span>
-                        Hire Me
-                        <motion.span
-                          className="inline-flex"
-                          animate={{ x: [0, 4, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                          <ArrowRight className="h-4 w-4" />
-                        </motion.span>
-                      </span>
-                      {/* Shimmer effect */}
+                  <Link
+                    to="/contact"
+                    className="relative inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-8 sm:px-10 py-3.5 sm:py-4 overflow-hidden group"
+                    style={{
+                      background: `linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))`,
+                      boxShadow: `0 8px 32px -4px hsl(var(--accent) / 0.35), inset 0 1px 0 0 rgba(255,255,255,0.15)`,
+                    }}
+                  >
+                    {/* Hover glow overlay */}
+                    <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
+                    {/* Shimmer */}
+                    <motion.span
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
+                      animate={{ x: ["-200%", "300%"] }}
+                      transition={{ duration: 3, repeat: Infinity, repeatDelay: 5, ease: "linear" }}
+                    />
+                    <span className="relative z-10 flex items-center gap-2.5">
+                      <Sparkles className="h-[18px] w-[18px] text-white/90 group-hover:text-white transition-colors" />
+                      <span className="text-[15px] font-bold tracking-tight text-white font-display">Hire Me</span>
                       <motion.span
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -skew-x-12"
-                        animate={{ x: ["-150%", "250%"] }}
-                        transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 4, ease: "linear" }}
-                      />
-                    </Link>
-                  </Button>
+                        className="inline-flex"
+                        animate={{ x: [0, 3, 0] }}
+                        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <ArrowRight className="h-4 w-4 text-white/80" />
+                      </motion.span>
+                    </span>
+                  </Link>
                 </motion.div>
 
-                {/* About Me — secondary CTA */}
+                {/* About Me */}
                 <motion.div
-                  whileHover={{ scale: 1.06, y: -3 }}
-                  whileTap={{ scale: 0.92 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 14 }}
+                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 18 }}
                   className="w-full sm:w-auto"
                 >
-                  <Button asChild variant="outline" size="lg" className="rounded-full px-10 h-13 text-sm font-bold w-full sm:w-auto border-2 border-border/60 group hover:border-accent/40 hover:shadow-[0_0_24px_-6px_hsl(var(--accent)/0.25)] backdrop-blur-sm bg-background/50 transition-all duration-400">
-                    <Link to="/about">
-                      <span className="flex items-center gap-2.5 group-hover:text-accent transition-colors duration-300">
-                        <motion.span
-                          className="inline-flex"
-                          whileHover={{ scale: 1.2 }}
-                        >
-                          <User className="h-4 w-4" />
-                        </motion.span>
-                        About Me
-                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                      </span>
-                    </Link>
-                  </Button>
+                  <Link
+                    to="/about"
+                    className="relative inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl px-8 sm:px-10 py-3.5 sm:py-4 overflow-hidden group border border-border/40 hover:border-accent/30 transition-all duration-300 bg-card/40 backdrop-blur-xl"
+                    style={{
+                      boxShadow: `0 4px 20px -4px hsl(var(--foreground) / 0.06)`,
+                    }}
+                  >
+                    {/* Hover gradient reveal */}
+                    <span className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <span className="relative z-10 flex items-center gap-2.5">
+                      <User className="h-[18px] w-[18px] text-muted-foreground group-hover:text-accent transition-colors duration-300" />
+                      <span className="text-[15px] font-bold tracking-tight font-display group-hover:text-accent transition-colors duration-300">About Me</span>
+                      <ArrowRight className="h-4 w-4 text-muted-foreground/50 group-hover:text-accent group-hover:translate-x-1 transition-all duration-300" />
+                    </span>
+                  </Link>
                 </motion.div>
               </motion.div>
 
