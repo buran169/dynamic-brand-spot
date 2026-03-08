@@ -103,7 +103,7 @@ export const services = [
     icon: "Gamepad2",
     title: "SA-MP Development",
     desc: "Gameplay systems, admin tools, bug fixes, and performance tuning for SA-MP servers.",
-    pricing: "Starting from $40",
+    pricing: "Starting from $10",
     features: ["Gameplay Systems", "Admin Tools", "Bug Fixes", "Performance Tuning"],
     category: "development",
   },
