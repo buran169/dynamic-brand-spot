@@ -125,6 +125,7 @@ const Index = () => {
 
               <motion.p
                 className="text-muted-foreground mb-8 sm:mb-10 max-w-lg mx-auto lg:mx-0 text-sm sm:text-[15px] leading-relaxed"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.7 }}
