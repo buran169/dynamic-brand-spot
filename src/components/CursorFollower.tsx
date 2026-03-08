@@ -70,12 +70,18 @@ export function CursorFollower() {
 
       {/* Main cursor dot */}
       <motion.div
-        className="fixed pointer-events-none z-[9998] rounded-full"
         style={{
           x: springX,
           y: springY,
           translateX: "-50%",
           translateY: "-50%",
+          position: "fixed",
+          pointerEvents: "none",
+          zIndex: 9998,
+          borderRadius: "50%",
+          backgroundColor: "hsl(var(--primary))",
+          borderColor: "hsl(var(--primary))",
+          borderStyle: "solid",
         }}
         animate={{
           width: clicking ? 6 : hovering ? 40 : 10,
@@ -84,7 +90,6 @@ export function CursorFollower() {
           borderWidth: hovering ? 2 : 0,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="fixed pointer-events-none z-[9998] rounded-full bg-primary border-primary"
       />
 
       {/* Outer ring */}
