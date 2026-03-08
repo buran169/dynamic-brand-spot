@@ -14,6 +14,9 @@ import { GrainOverlay } from "@/components/GrainOverlay";
 import { BackToTop } from "@/components/BackToTop";
 import { MobileCTABar } from "@/components/MobileCTABar";
 import { FloatingContact } from "@/components/FloatingContact";
+import { LoadingScreen } from "@/components/LoadingScreen";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { SkipToContent } from "@/components/SkipToContent";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
@@ -29,19 +32,22 @@ const queryClient = new QueryClient();
 function AnimatedRoutes() {
   const location = useLocation();
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Index />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/legal/terms" element={<Terms />} />
-        <Route path="/legal/privacy" element={<Privacy />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </AnimatePresence>
+    <>
+      <Breadcrumbs />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Index />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/legal/terms" element={<Terms />} />
+          <Route path="/legal/privacy" element={<Privacy />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AnimatePresence>
+    </>
   );
 }
 
@@ -51,13 +57,15 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <LoadingScreen />
         <TouchBubbles />
         <CursorFollower />
         <GrainOverlay />
         <BrowserRouter>
+          <SkipToContent />
           <ScrollProgress />
           <Header />
-          <main className="pt-0">
+          <main id="main-content" className="pt-0">
             <AnimatedRoutes />
           </main>
           <Footer />

@@ -73,6 +73,7 @@ export function Header() {
               </Link>
             );
           })}
+          <CommandMenu />
           <LanguageToggle />
           <ThemeToggle />
           <Magnetic strength={0.3}>
