@@ -213,7 +213,7 @@ a:active, button:active, [role="button"]:active {
 }
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 32px -8px hsl(var(--foreground) / 0.08);
+  box-shadow: 0 16px 32px -8px hsl(var(--accent) / 0.12);
 }
 .hover-lift:active {
   transform: translateY(-1px) scale(0.99);
