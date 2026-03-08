@@ -259,12 +259,18 @@ a:active, button:active, [role="button"]:active {
   inset: -4px;
 }
 
-/* Touch glow */
+/* Touch glow — active/pressed state */
 .touch-glow {
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
 }
 .touch-glow:active {
-  box-shadow: 0 0 16px -4px hsl(var(--primary) / 0.3);
+  box-shadow: 0 0 20px -4px hsl(var(--primary) / 0.35);
+  background-color: hsl(var(--primary) / 0.03);
+}
+
+/* Image/avatar hover float */
+img, .avatar-hover {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
 }
 
 /* Smooth scroll */
