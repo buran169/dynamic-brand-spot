@@ -104,13 +104,14 @@ const Index = () => {
               </motion.div>
 
               <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-3 sm:mb-4 leading-[1.08] tracking-tightest text-balance"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-3 sm:mb-4 leading-[1.08] tracking-tightest text-balance"
+                style={{ fontFamily: "'Playfair Display', 'Georgia', serif", fontWeight: 800 }}
                 initial={{ opacity: 0, y: 30, filter: "blur(6px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ delay: 0.15, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               >
                 {t("hero.greeting")}{" "}
-                <span className="gradient-text gradient-text-animated">{siteConfig.name}</span>
+                <span className="gradient-text gradient-text-animated" style={{ fontFamily: "'Playfair Display', 'Georgia', serif" }}>{siteConfig.name}</span>
               </motion.h1>
 
               <motion.div
@@ -223,7 +224,7 @@ const Index = () => {
             </motion.div>
 
             <motion.div
-              className="order-1 lg:order-2 flex flex-col items-center gap-6 sm:gap-8"
+              className="order-1 lg:order-2 flex flex-col items-center gap-6 sm:gap-8 mt-8 sm:mt-12 lg:mt-16"
               initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               transition={{ delay: 0.3, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
