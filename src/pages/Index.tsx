@@ -86,11 +86,11 @@ const Index = () => {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                 <Badge variant="secondary" className="mb-6 gap-1.5 px-4 py-1.5 text-xs font-medium rounded-full border-primary/20 bg-primary/5 glass">
                   <motion.div
-                    className="w-2 h-2 rounded-full bg-emerald-400 relative"
+                    className="w-2 h-2 rounded-full bg-primary/80 relative"
                     animate={{ scale: [1, 1.3, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    <div className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-40" />
+                    <div className="absolute inset-0 rounded-full bg-primary/60 animate-ping opacity-40" />
                   </motion.div>
                   <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}>
                     <Sparkles className="h-3.5 w-3.5 text-primary" />
