@@ -19,34 +19,139 @@ const Index = () => {
     <div className="min-h-screen">
       {/* Hero */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        {/* Background blobs */}
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-glow-pulse" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-glow-pulse" style={{ animationDelay: "1.5s" }} />
+        {/* Animated mesh background */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute top-0 -left-40 w-[500px] h-[500px] rounded-full blur-[100px]"
+            style={{ background: `radial-gradient(circle, hsl(var(--primary) / 0.12), transparent 70%)` }}
+            animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-0 -right-40 w-[600px] h-[600px] rounded-full blur-[120px]"
+            style={{ background: `radial-gradient(circle, hsl(var(--accent) / 0.1), transparent 70%)` }}
+            animate={{ x: [0, -50, 0], y: [0, -60, 0] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full blur-[80px]"
+            style={{ background: `radial-gradient(circle, hsl(var(--primary) / 0.06), transparent 70%)` }}
+            animate={{ scale: [1, 1.3, 1] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+          {/* Grid pattern overlay */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+              backgroundSize: "60px 60px",
+            }}
+          />
+        </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <FadeIn className="order-2 md:order-1 text-center md:text-left">
-            <Badge variant="secondary" className="mb-4 gap-1">
-              <Sparkles className="h-3 w-3" /> Available for hire
-            </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 leading-tight">
-              Hi, I'm <span className="gradient-text">{siteConfig.name}</span>
-            </h1>
-            <p className="text-lg text-muted-foreground mb-2 font-medium">{siteConfig.tagline}</p>
-            <p className="text-muted-foreground mb-8 max-w-lg">{siteConfig.shortBio}</p>
-            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-              <Button asChild size="lg" className="rounded-full">
-                <Link to="/contact">Hire Me <ArrowRight className="ml-1 h-4 w-4" /></Link>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10">
+          {/* Text Content */}
+          <FadeIn className="order-2 lg:order-1 text-center lg:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <Badge variant="secondary" className="mb-6 gap-1.5 px-4 py-1.5 text-xs font-medium rounded-full border-primary/20 bg-primary/5">
+                <motion.span
+                  animate={{ rotate: [0, 15, -15, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                >
+                  <Sparkles className="h-3.5 w-3.5 text-primary" />
+                </motion.span>
+                Available for hire
+              </Badge>
+            </motion.div>
+
+            <motion.h1
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold mb-6 leading-[1.1] tracking-tight"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7 }}
+            >
+              Hi, I'm{" "}
+              <span className="relative">
+                <span className="gradient-text">{siteConfig.name}</span>
+                <motion.span
+                  className="absolute -bottom-2 left-0 h-[3px] bg-gradient-to-r from-primary to-accent rounded-full"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
+                />
+              </span>
+            </motion.h1>
+
+            <motion.p
+              className="text-base sm:text-lg text-muted-foreground mb-2 font-medium"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              {siteConfig.tagline}
+            </motion.p>
+
+            <motion.p
+              className="text-muted-foreground mb-10 max-w-lg mx-auto lg:mx-0 text-sm sm:text-base leading-relaxed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
+              {siteConfig.shortBio}
+            </motion.p>
+
+            <motion.div
+              className="flex flex-wrap gap-3 justify-center lg:justify-start"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+            >
+              <Button asChild size="lg" className="rounded-full px-8 glow group">
+                <Link to="/contact">
+                  Hire Me
+                  <motion.span
+                    className="ml-1 inline-block"
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <ArrowRight className="h-4 w-4" />
+                  </motion.span>
+                </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full">
+              <Button asChild variant="outline" size="lg" className="rounded-full px-8 border-primary/20 hover:border-primary/40 transition-colors">
                 <Link to="/services">View Services</Link>
               </Button>
-            </div>
+              <Button asChild variant="ghost" size="lg" className="rounded-full px-8">
+                <Link to="/projects">My Work</Link>
+              </Button>
+            </motion.div>
           </FadeIn>
 
-          <FadeIn delay={0.2} className="order-1 md:order-2 flex justify-center">
+          {/* Profile Image */}
+          <FadeIn delay={0.4} className="order-1 lg:order-2 flex justify-center">
             <AnimatedProfileImage />
           </FadeIn>
         </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+          animate={{ y: [0, 8, 0], opacity: [0.4, 0.8, 0.4] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-medium">Scroll</span>
+          <div className="w-5 h-8 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-1.5">
+            <motion.div
+              className="w-1 h-1.5 rounded-full bg-primary"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+        </motion.div>
       </section>
 
       {/* Trust Badges */}
