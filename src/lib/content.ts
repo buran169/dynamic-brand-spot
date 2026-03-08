@@ -112,7 +112,7 @@ export const services = [
     icon: "Palette",
     title: "Graphics Design",
     desc: "YouTube thumbnails, banners, logo design, and complete brand kits.",
-    pricing: "Starting from $20",
+    pricing: "Starting from $7",
     features: ["YouTube Thumbnails", "Banners & Headers", "Logo / Brand Kit", "UI Assets"],
     category: "design",
   },
