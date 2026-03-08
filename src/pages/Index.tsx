@@ -45,41 +45,34 @@ const Index = () => {
     <PageTransition variant="morphIn">
       <div className="min-h-screen">
         {/* Hero */}
-        <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-          {/* Subtle background — Vercel/Linear style radial glow */}
+        <section className="min-h-[100svh] flex items-center justify-center relative overflow-hidden">
+          {/* Background */}
           <div className="absolute inset-0">
             <div
-              className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] opacity-20 dark:opacity-30"
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] md:w-[1000px] h-[400px] md:h-[600px] opacity-20 dark:opacity-30"
               style={{
                 background: `radial-gradient(ellipse at center, hsl(var(--primary) / 0.15) 0%, transparent 70%)`,
               }}
             />
             <div
-              className="absolute bottom-0 right-0 w-[600px] h-[600px] opacity-10 dark:opacity-20"
-              style={{
-                background: `radial-gradient(circle, hsl(var(--accent) / 0.1) 0%, transparent 60%)`,
-              }}
-            />
-            {/* Subtle grid */}
-            <div
               className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03]"
               style={{
                 backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-                backgroundSize: "80px 80px",
+                backgroundSize: "60px 60px",
               }}
             />
           </div>
 
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center relative z-10">
             <motion.div
               className="order-2 lg:order-1 text-center lg:text-left"
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Availability badge */}
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 0.5 }}>
-                <Badge variant="secondary" className="mb-8 gap-2 px-3 py-1 text-xs font-medium rounded-full border-border">
+              {/* Badge */}
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+                <Badge variant="secondary" className="mb-6 sm:mb-8 gap-2 px-3 py-1 text-xs font-medium rounded-full border-border">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-50" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
@@ -89,7 +82,7 @@ const Index = () => {
               </motion.div>
 
               <motion.h1
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 leading-[1.05] tracking-tightest text-balance"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-3 sm:mb-4 leading-[1.08] tracking-tightest text-balance"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -98,9 +91,8 @@ const Index = () => {
                 <span className="gradient-text gradient-text-animated">{siteConfig.name}</span>
               </motion.h1>
 
-              {/* Typing roles */}
               <motion.div
-                className="text-lg sm:text-xl text-muted-foreground font-medium mb-3 h-8"
+                className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium mb-2 sm:mb-3 h-7 sm:h-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
@@ -109,7 +101,7 @@ const Index = () => {
               </motion.div>
 
               <motion.p
-                className="text-muted-foreground mb-10 max-w-lg mx-auto lg:mx-0 text-[15px] leading-relaxed"
+                className="text-muted-foreground mb-8 sm:mb-10 max-w-lg mx-auto lg:mx-0 text-sm sm:text-[15px] leading-relaxed"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
@@ -118,29 +110,25 @@ const Index = () => {
               </motion.p>
 
               <motion.div
-                className="flex flex-wrap gap-3 justify-center lg:justify-start"
+                className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
+                transition={{ delay: 0.6 }}
               >
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
-                  <Button asChild size="lg" className="rounded-full px-8 h-11 text-sm font-medium glow">
-                    <Link to="/contact">
-                      {t("nav.hire")}
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
-                  <Button asChild variant="outline" size="lg" className="rounded-full px-8 h-11 text-sm font-medium">
-                    <Link to="/projects">{t("hero.work")}</Link>
-                  </Button>
-                </motion.div>
+                <Button asChild size="lg" className="rounded-full px-8 h-11 text-sm font-medium glow w-full sm:w-auto">
+                  <Link to="/contact">
+                    {t("nav.hire")}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="rounded-full px-8 h-11 text-sm font-medium w-full sm:w-auto">
+                  <Link to="/projects">{t("hero.work")}</Link>
+                </Button>
               </motion.div>
 
-              {/* Stats */}
+              {/* Stats — 2x2 on mobile, 4 on desktop */}
               <motion.div
-                className="grid grid-cols-4 gap-6 mt-12 pt-8 border-t border-border/50"
+                className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-border/50"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
@@ -157,21 +145,21 @@ const Index = () => {
             </motion.div>
 
             <motion.div
-              className="order-1 lg:order-2 flex flex-col items-center gap-8"
+              className="order-1 lg:order-2 flex flex-col items-center gap-6 sm:gap-8"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <AnimatedProfileImage />
-              <div className="hidden md:block w-full">
+              <div className="hidden lg:block w-full">
                 <DevTerminal />
               </div>
             </motion.div>
           </div>
 
-          {/* Scroll indicator */}
+          {/* Scroll indicator - hidden on small mobile */}
           <motion.div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+            className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.4 }}
             transition={{ delay: 1.2 }}
@@ -191,21 +179,18 @@ const Index = () => {
 
         {/* Trust Badges */}
         <section className="section-padding">
-          <StaggerContainer className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <StaggerContainer className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             {trustKeys.map((b) => {
               const Icon = (LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[b.icon] || LucideIcons.Box;
               return (
                 <StaggerItem key={b.titleKey}>
-                  <motion.div
-                    whileHover={{ y: -2 }}
-                    className="text-center p-6 rounded-2xl border border-border/50 bg-card/30 hover:bg-card/60 transition-all duration-300 group"
-                  >
-                    <div className="h-10 w-10 mx-auto rounded-xl bg-primary/5 flex items-center justify-center mb-3 group-hover:bg-primary/10 transition-colors">
-                      <Icon className="h-5 w-5 text-primary/70 group-hover:text-primary transition-colors" />
+                  <div className="text-center p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-border/50 bg-card/30 group">
+                    <div className="h-9 w-9 sm:h-10 sm:w-10 mx-auto rounded-lg sm:rounded-xl bg-primary/5 flex items-center justify-center mb-2 sm:mb-3 group-hover:bg-primary/10 transition-colors">
+                      <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary/70" />
                     </div>
-                    <h3 className="font-semibold text-sm mb-1">{t(b.titleKey)}</h3>
-                    <p className="text-xs text-muted-foreground">{t(b.descKey)}</p>
-                  </motion.div>
+                    <h3 className="font-semibold text-xs sm:text-sm mb-0.5 sm:mb-1">{t(b.titleKey)}</h3>
+                    <p className="text-[10px] sm:text-xs text-muted-foreground leading-tight">{t(b.descKey)}</p>
+                  </div>
                 </StaggerItem>
               );
             })}
@@ -218,7 +203,7 @@ const Index = () => {
         <section className="section-padding">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <SectionHeading title={t("section.services")} subtitle={t("section.services.sub")} />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {services.slice(0, 6).map((s, i) => (
                 <FadeIn key={s.id} delay={i * 0.06}>
                   <ServiceCard service={s} />
@@ -234,19 +219,17 @@ const Index = () => {
         <section className="section-padding bg-muted/30">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <SectionHeading title={t("section.projects")} subtitle={t("section.projects.sub")} />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {projects.slice(0, 3).map((p, i) => (
                 <FadeIn key={p.id} delay={i * 0.08}>
                   <ProjectCard project={p} />
                 </FadeIn>
               ))}
             </div>
-            <FadeIn className="text-center mt-10">
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} className="inline-block">
-                <Button asChild variant="outline" className="rounded-full text-sm h-10 px-6">
-                  <Link to="/projects">{t("btn.viewAll")} <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                </Button>
-              </motion.div>
+            <FadeIn className="text-center mt-8 sm:mt-10">
+              <Button asChild variant="outline" className="rounded-full text-sm h-10 px-6 w-full sm:w-auto">
+                <Link to="/projects">{t("btn.viewAll")} <ArrowRight className="ml-2 h-4 w-4" /></Link>
+              </Button>
             </FadeIn>
           </div>
         </section>

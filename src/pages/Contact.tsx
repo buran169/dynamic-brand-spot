@@ -56,28 +56,25 @@ const ContactPage = () => {
 
   return (
     <PageTransition variant="scaleUp">
-      <div className="min-h-screen pt-24">
+      <div className="min-h-screen pt-16 sm:pt-20">
         <section className="section-padding">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <SectionHeading title={t("contact.title")} subtitle={t("contact.sub")} />
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
               <FadeIn>
-                <h3 className="font-display font-semibold text-lg mb-4">{t("contact.quick")}</h3>
+                <h3 className="font-semibold text-base sm:text-lg mb-4">{t("contact.quick")}</h3>
                 <ContactButtons />
-                <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
-                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <div className="mt-4 flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0" />
                   {t("contact.response")}
                 </div>
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <motion.form
+                <form
                   onSubmit={handleSubmit}
-                  className="space-y-4 p-6 rounded-2xl glass"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
+                  className="space-y-3 sm:space-y-4 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-border/50 bg-card/50"
                 >
                   <input
                     type="text"
@@ -95,7 +92,7 @@ const ContactPage = () => {
                       placeholder={t("contact.name")}
                       value={form.name}
                       onChange={(e) => update("name", e.target.value)}
-                      className="rounded-xl h-12"
+                      className="rounded-lg sm:rounded-xl h-11 sm:h-12 text-sm"
                       aria-label={t("contact.name")}
                       autoComplete="name"
                     />
@@ -109,7 +106,7 @@ const ContactPage = () => {
                       placeholder={t("contact.email")}
                       value={form.email}
                       onChange={(e) => update("email", e.target.value)}
-                      className="rounded-xl h-12"
+                      className="rounded-lg sm:rounded-xl h-11 sm:h-12 text-sm"
                       aria-label={t("contact.email")}
                       autoComplete="email"
                     />
@@ -118,7 +115,7 @@ const ContactPage = () => {
 
                   <div>
                     <Select value={form.service} onValueChange={(v) => update("service", v)}>
-                      <SelectTrigger className="rounded-xl h-12" aria-label={t("contact.service")}>
+                      <SelectTrigger className="rounded-lg sm:rounded-xl h-11 sm:h-12 text-sm" aria-label={t("contact.service")}>
                         <SelectValue placeholder={t("contact.service")} />
                       </SelectTrigger>
                       <SelectContent>
@@ -132,7 +129,7 @@ const ContactPage = () => {
 
                   <div>
                     <Select value={form.budget} onValueChange={(v) => update("budget", v)}>
-                      <SelectTrigger className="rounded-xl h-12" aria-label={t("contact.budget")}>
+                      <SelectTrigger className="rounded-lg sm:rounded-xl h-11 sm:h-12 text-sm" aria-label={t("contact.budget")}>
                         <SelectValue placeholder={t("contact.budget")} />
                       </SelectTrigger>
                       <SelectContent>
@@ -149,18 +146,16 @@ const ContactPage = () => {
                       placeholder={t("contact.message")}
                       value={form.message}
                       onChange={(e) => update("message", e.target.value)}
-                      className="rounded-xl min-h-[120px]"
+                      className="rounded-lg sm:rounded-xl min-h-[100px] sm:min-h-[120px] text-sm"
                       aria-label={t("contact.message")}
                     />
                     {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
                   </div>
 
-                  <motion.div whileTap={{ scale: 0.97 }}>
-                    <Button type="submit" disabled={sending} className="w-full rounded-full glow h-12 text-base touch-target" size="lg">
-                      {sending ? t("btn.sending") : <>{t("btn.sendMessage")} <Send className="ml-1 h-4 w-4" /></>}
-                    </Button>
-                  </motion.div>
-                </motion.form>
+                  <Button type="submit" disabled={sending} className="w-full rounded-full h-11 sm:h-12 text-sm" size="lg">
+                    {sending ? t("btn.sending") : <>{t("btn.sendMessage")} <Send className="ml-2 h-4 w-4" /></>}
+                  </Button>
+                </form>
               </FadeIn>
             </div>
           </div>

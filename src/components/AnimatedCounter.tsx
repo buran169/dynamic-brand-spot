@@ -33,15 +33,15 @@ export function AnimatedCounter({ target, suffix = "", duration = 2, label }: An
     <motion.div
       ref={ref}
       className="text-center"
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <div className="text-2xl sm:text-3xl font-display font-bold gradient-text">
+      <div className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text tabular-nums">
         {count}{suffix}
       </div>
-      <div className="text-xs sm:text-sm text-muted-foreground mt-1">{label}</div>
+      <div className="text-[10px] sm:text-xs text-muted-foreground mt-0.5 sm:mt-1 leading-tight">{label}</div>
     </motion.div>
   );
 }
