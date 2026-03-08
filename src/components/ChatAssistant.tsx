@@ -70,7 +70,7 @@ export function ChatAssistant() {
             exit={{ scale: 0 }}
             whileTap={{ scale: 0.92 }}
             onClick={() => setOpen(true)}
-            className="fixed bottom-[88px] md:bottom-6 right-16 md:right-20 z-50 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-accent text-accent-foreground shadow-lg flex items-center justify-center"
+            className="fixed bottom-[88px] md:bottom-6 right-3 sm:right-4 z-50 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-accent text-accent-foreground shadow-lg flex items-center justify-center"
             aria-label="Open chat"
           >
             <MessageCircle className="w-5 h-5" />

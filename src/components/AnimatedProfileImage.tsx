@@ -21,14 +21,14 @@ export function AnimatedProfileImage({ size = "lg" }: { size?: "sm" | "lg" }) {
 
       {/* Rotating ring 1 — dashed */}
       <motion.div
-        className="absolute w-[200px] h-[200px] sm:w-[270px] sm:h-[270px] md:w-[340px] md:h-[340px] rounded-full border border-dashed border-primary/15"
+        className="absolute w-[200px] h-[200px] sm:w-[270px] sm:h-[270px] md:w-[340px] md:h-[340px] rounded-full border-[1.5px] border-dashed border-primary/25"
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
 
       {/* Rotating ring 2 — opposite direction with dots */}
       <motion.div
-        className="absolute w-[230px] h-[230px] sm:w-[300px] sm:h-[300px] md:w-[380px] md:h-[380px] rounded-full border border-accent/10"
+        className="absolute w-[230px] h-[230px] sm:w-[300px] sm:h-[300px] md:w-[380px] md:h-[380px] rounded-full border-[1.5px] border-primary/25"
         animate={{ rotate: -360 }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       >
