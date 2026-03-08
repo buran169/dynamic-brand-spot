@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useI18n } from "@/lib/i18n";
 import * as Icons from "lucide-react";
 import type { services } from "@/lib/content";
+import { Tilt3DCard } from "@/components/Tilt3DCard";
 
 type Service = (typeof services)[number];
 
@@ -14,12 +15,8 @@ export function ServiceCard({ service }: { service: Service }) {
   const { t } = useI18n();
 
   return (
-    <motion.div
-      whileHover={{ y: -8 }}
-      whileTap={{ scale: 0.96, y: -2 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    >
-      <Card className="h-full glass hover:glow transition-all duration-300 rounded-2xl group card-interactive touch-ripple">
+    <Tilt3DCard className="h-full group" intensity={8}>
+      <Card className="h-full glass gradient-border-card hover:glow transition-all duration-300 rounded-2xl card-interactive touch-ripple">
         <CardHeader>
           <motion.div
             className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors icon-interactive"
@@ -48,6 +45,6 @@ export function ServiceCard({ service }: { service: Service }) {
           </motion.div>
         </CardContent>
       </Card>
-    </motion.div>
+    </Tilt3DCard>
   );
 }

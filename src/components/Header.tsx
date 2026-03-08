@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Magnetic } from "./Magnetic";
 
 const navKeys = [
   { href: "/", key: "nav.home" },
@@ -73,11 +74,13 @@ export function Header() {
           })}
           <LanguageToggle />
           <ThemeToggle />
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }}>
-            <Button asChild size="sm" className="ml-2 rounded-full glow-sm btn-pulse magnetic-btn">
-              <Link to="/contact">{t("nav.hire")}</Link>
-            </Button>
-          </motion.div>
+          <Magnetic strength={0.3}>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }}>
+              <Button asChild size="sm" className="ml-2 rounded-full glow-sm btn-pulse">
+                <Link to="/contact">{t("nav.hire")}</Link>
+              </Button>
+            </motion.div>
+          </Magnetic>
         </nav>
 
         {/* Mobile */}
@@ -95,7 +98,6 @@ export function Header() {
       <AnimatePresence>
         {open && (
           <>
-            {/* Overlay to close menu */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

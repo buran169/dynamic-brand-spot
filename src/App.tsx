@@ -11,6 +11,7 @@ import { TouchBubbles } from "@/components/TouchBubbles";
 import { CursorFollower } from "@/components/CursorFollower";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { GrainOverlay } from "@/components/GrainOverlay";
+import { BackToTop } from "@/components/BackToTop";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
@@ -58,6 +59,7 @@ const App = () => (
             <AnimatedRoutes />
           </main>
           <Footer />
+          <BackToTop />
         </BrowserRouter>
       </TooltipProvider>
     </I18nProvider>

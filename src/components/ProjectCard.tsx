@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useI18n } from "@/lib/i18n";
 import type { projects } from "@/lib/content";
+import { Tilt3DCard } from "@/components/Tilt3DCard";
 
 type Project = (typeof projects)[number];
 
@@ -12,12 +13,8 @@ export function ProjectCard({ project }: { project: Project }) {
   const { t } = useI18n();
 
   return (
-    <motion.div
-      whileHover={{ y: -8 }}
-      whileTap={{ scale: 0.96, y: -2 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    >
-      <Card className="h-full glass hover:glow transition-all duration-300 rounded-2xl overflow-hidden group card-interactive touch-ripple">
+    <Tilt3DCard className="h-full group" intensity={10}>
+      <Card className="h-full glass gradient-border-card hover:glow transition-all duration-300 rounded-2xl overflow-hidden card-interactive touch-ripple">
         {/* Gradient thumbnail */}
         <div className={`h-40 bg-gradient-to-br ${project.gradient} opacity-80 group-hover:opacity-100 transition-opacity duration-300 relative overflow-hidden`}>
           <motion.div
@@ -71,6 +68,6 @@ export function ProjectCard({ project }: { project: Project }) {
           </Dialog>
         </CardContent>
       </Card>
-    </motion.div>
+    </Tilt3DCard>
   );
 }

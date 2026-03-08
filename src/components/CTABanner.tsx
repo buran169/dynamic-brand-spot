@@ -4,6 +4,7 @@ import { FadeIn } from "./MotionWrapper";
 import { ArrowRight } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { motion } from "framer-motion";
+import { Magnetic } from "./Magnetic";
 
 export function CTABanner() {
   const { t } = useI18n();
@@ -28,18 +29,22 @@ export function CTABanner() {
           <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 gradient-text">{t("cta.title")}</h2>
           <p className="text-muted-foreground mb-6">{t("cta.subtitle")}</p>
           <div className="flex flex-wrap justify-center gap-3">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }} transition={{ type: "spring", stiffness: 400 }}>
-              <Button asChild size="lg" className="rounded-full glow btn-pulse touch-glow">
-                <Link to="/contact">
-                  {t("cta.quote")} <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }} transition={{ type: "spring", stiffness: 400 }}>
-              <Button asChild variant="outline" size="lg" className="rounded-full btn-pulse touch-glow">
-                <Link to="/services">{t("hero.services")}</Link>
-              </Button>
-            </motion.div>
+            <Magnetic strength={0.2}>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }} transition={{ type: "spring", stiffness: 400 }}>
+                <Button asChild size="lg" className="rounded-full glow btn-pulse touch-glow">
+                  <Link to="/contact">
+                    {t("cta.quote")} <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </Button>
+              </motion.div>
+            </Magnetic>
+            <Magnetic strength={0.2}>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }} transition={{ type: "spring", stiffness: 400 }}>
+                <Button asChild variant="outline" size="lg" className="rounded-full btn-pulse touch-glow">
+                  <Link to="/services">{t("hero.services")}</Link>
+                </Button>
+              </motion.div>
+            </Magnetic>
           </div>
         </div>
       </FadeIn>
