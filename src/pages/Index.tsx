@@ -124,26 +124,32 @@ const Index = () => {
               </motion.p>
 
               <motion.div className="flex flex-wrap gap-3 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
-                  <Button asChild size="lg" className="rounded-full px-8 glow magnetic-btn">
-                    <Link to="/contact">
-                      {t("nav.hire")}
-                      <motion.span className="ml-1 inline-block" animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                        <ArrowRight className="h-4 w-4" />
-                      </motion.span>
-                    </Link>
-                  </Button>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
-                  <Button asChild variant="outline" size="lg" className="rounded-full px-8 border-primary/20 hover:border-primary/40 magnetic-btn">
-                    <Link to="/services">{t("hero.services")}</Link>
-                  </Button>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
-                  <Button asChild variant="ghost" size="lg" className="rounded-full px-8 magnetic-btn">
-                    <Link to="/projects">{t("hero.work")}</Link>
-                  </Button>
-                </motion.div>
+                <Magnetic strength={0.25}>
+                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
+                    <Button asChild size="lg" className="rounded-full px-8 glow">
+                      <Link to="/contact">
+                        {t("nav.hire")}
+                        <motion.span className="ml-1 inline-block" animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                          <ArrowRight className="h-4 w-4" />
+                        </motion.span>
+                      </Link>
+                    </Button>
+                  </motion.div>
+                </Magnetic>
+                <Magnetic strength={0.25}>
+                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
+                    <Button asChild variant="outline" size="lg" className="rounded-full px-8 border-primary/20 hover:border-primary/40">
+                      <Link to="/services">{t("hero.services")}</Link>
+                    </Button>
+                  </motion.div>
+                </Magnetic>
+                <Magnetic strength={0.25}>
+                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
+                    <Button asChild variant="ghost" size="lg" className="rounded-full px-8">
+                      <Link to="/projects">{t("hero.work")}</Link>
+                    </Button>
+                  </motion.div>
+                </Magnetic>
               </motion.div>
 
               {/* Quick stats */}
