@@ -73,6 +73,8 @@ const App = () => (
           <Footer />
           <BackToTop />
           <FloatingContact />
+          <ChatAssistant />
+          <PWAInstallPrompt />
           <MobileCTABar />
         </BrowserRouter>
       </TooltipProvider>
