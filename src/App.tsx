@@ -17,6 +17,8 @@ import { FloatingContact } from "@/components/FloatingContact";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SkipToContent } from "@/components/SkipToContent";
+import { ChatAssistant } from "@/components/ChatAssistant";
+import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
