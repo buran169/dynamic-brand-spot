@@ -12,6 +12,8 @@ import { CursorFollower } from "@/components/CursorFollower";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { GrainOverlay } from "@/components/GrainOverlay";
 import { BackToTop } from "@/components/BackToTop";
+import { MobileCTABar } from "@/components/MobileCTABar";
+import { FloatingContact } from "@/components/FloatingContact";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
@@ -60,6 +62,8 @@ const App = () => (
           </main>
           <Footer />
           <BackToTop />
+          <FloatingContact />
+          <MobileCTABar />
         </BrowserRouter>
       </TooltipProvider>
     </I18nProvider>
