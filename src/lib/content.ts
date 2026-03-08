@@ -12,10 +12,10 @@ export const siteConfig = {
 };
 
 export const socialLinks = {
-  discord: { url: "https://discord.gg/your-invite", label: "Discord", username: "yourname" },
-  telegram: { url: "https://t.me/yourusername", label: "Telegram" },
-  facebook: { url: "https://facebook.com/yourpage", label: "Facebook" },
-  whatsapp: { url: "https://wa.me/8801XXXXXXXXX", label: "WhatsApp" },
+  discord: { url: "https://discord.gg/wAdhm2R3a", label: "Discord", username: "Burhan10" },
+  telegram: { url: "https://t.me/Ladka_ladkii", label: "Telegram" },
+  facebook: { url: "https://www.facebook.com/bullavaii01", label: "Facebook" },
+  whatsapp: { url: "https://wa.me/8801342133127", label: "WhatsApp" },
 };
 
 export const navLinks = [
@@ -85,7 +85,7 @@ export const services = [
     icon: "Globe",
     title: "Web Development",
     desc: "Landing pages, business websites, and full-stack features with auth, dashboards, and forms.",
-    pricing: "Starting from $150",
+    pricing: "Starting from $12",
     features: ["Landing Page / Business Website", "Full-stack features (auth, dashboard, forms)", "SEO & Performance Optimization", "Responsive Design"],
     category: "development",
   },
@@ -94,7 +94,7 @@ export const services = [
     icon: "MessageSquare",
     title: "Discord Development",
     desc: "Custom bots with moderation, tickets, logging, and full server setup with automation.",
-    pricing: "Starting from $50",
+    pricing: "Starting from $10",
     features: ["Custom Bot Development", "Server Setup & Automation", "Moderation & Ticket Systems", "Role Automation & Logging"],
     category: "development",
   },
@@ -103,7 +103,7 @@ export const services = [
     icon: "Gamepad2",
     title: "SA-MP Development",
     desc: "Gameplay systems, admin tools, bug fixes, and performance tuning for SA-MP servers.",
-    pricing: "Starting from $40",
+    pricing: "Starting from $10",
     features: ["Gameplay Systems", "Admin Tools", "Bug Fixes", "Performance Tuning"],
     category: "development",
   },
@@ -112,7 +112,7 @@ export const services = [
     icon: "Palette",
     title: "Graphics Design",
     desc: "YouTube thumbnails, banners, logo design, and complete brand kits.",
-    pricing: "Starting from $20",
+    pricing: "Starting from $7",
     features: ["YouTube Thumbnails", "Banners & Headers", "Logo / Brand Kit", "UI Assets"],
     category: "design",
   },
@@ -121,7 +121,7 @@ export const services = [
     icon: "CreditCard",
     title: "Digital Subscription Assistance",
     desc: "Official subscription purchase assistance and setup guidance.",
-    pricing: "Contact for quote",
+    pricing: "Contact for pricing",
     features: [
       "Official subscription purchase assistance",
       "Gift card / plan guidance (where available)",

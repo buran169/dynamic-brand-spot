@@ -9,8 +9,8 @@ import { CheckCircle } from "lucide-react";
 import { PageTransition } from "@/components/PageTransition";
 
 const statKeys = [
-  { value: "50+", key: "stat.projects" },
-  { value: "30+", key: "stat.clients" },
+  { value: "4+", key: "stat.projects" },
+  { value: "3+", key: "stat.clients" },
   { value: "5+", key: "stat.experience" },
   { value: "20+", key: "stat.technologies" },
 ];
