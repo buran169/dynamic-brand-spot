@@ -115,15 +115,27 @@ const Index = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
               >
-                <Button asChild size="lg" className="rounded-full px-8 h-11 text-sm font-medium glow w-full sm:w-auto">
-                  <Link to="/contact">
-                    {t("nav.hire")}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-full px-8 h-11 text-sm font-medium w-full sm:w-auto">
-                  <Link to="/projects">{t("hero.work")}</Link>
-                </Button>
+                <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 17 }} className="w-full sm:w-auto">
+                  <Button asChild size="lg" className="rounded-full px-8 h-12 text-sm font-semibold glow w-full sm:w-auto relative overflow-hidden group">
+                    <Link to="/contact">
+                      <span className="relative z-10 flex items-center gap-2">
+                        <Sparkles className="h-4 w-4" />
+                        Hire Me
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </Link>
+                  </Button>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 17 }} className="w-full sm:w-auto">
+                  <Button asChild variant="outline" size="lg" className="rounded-full px-8 h-12 text-sm font-semibold w-full sm:w-auto border-border/80 group">
+                    <Link to="/projects">
+                      <span className="flex items-center gap-2">
+                        My Work
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </span>
+                    </Link>
+                  </Button>
+                </motion.div>
               </motion.div>
 
               {/* Stats — 2x2 on mobile, 4 on desktop */}

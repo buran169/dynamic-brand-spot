@@ -13,7 +13,7 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { GrainOverlay } from "@/components/GrainOverlay";
 import { BackToTop } from "@/components/BackToTop";
 import { MobileCTABar } from "@/components/MobileCTABar";
-import { FloatingContact } from "@/components/FloatingContact";
+
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SkipToContent } from "@/components/SkipToContent";
@@ -72,7 +72,6 @@ const App = () => (
           </main>
           <Footer />
           <BackToTop />
-          <FloatingContact />
           <ChatAssistant />
           <PWAInstallPrompt />
           <MobileCTABar />
