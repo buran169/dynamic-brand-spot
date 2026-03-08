@@ -272,29 +272,17 @@ const Index = () => {
         <section className="section-padding bg-card/30">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <SectionHeading title={t("section.testimonials")} subtitle={t("section.testimonials.sub")} />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {testimonials.map((te, i) => (
-                <FadeIn key={te.name} delay={i * 0.1}>
-                  <motion.div whileHover={{ y: -6 }} whileTap={{ scale: 0.98 }} className="p-6 rounded-2xl glass gradient-border-card cursor-default">
-                    <div className="flex gap-0.5 mb-3">
-                      {Array.from({ length: te.rating }).map((_, j) => (
-                        <Star key={j} className="h-4 w-4 text-primary fill-primary" />
-                      ))}
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-4 italic">"{te.text}"</p>
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-xs font-bold text-primary">
-                        {te.name.charAt(0)}
-                      </div>
-                      <div>
-                        <p className="font-display font-semibold text-sm">{te.name}</p>
-                        <p className="text-xs text-muted-foreground">{te.role}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </FadeIn>
-              ))}
-            </div>
+            <TestimonialsSlider />
+          </div>
+        </section>
+
+        <SectionDivider />
+
+        {/* Why Choose Me */}
+        <section className="section-padding">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <SectionHeading title={t("section.strengths")} subtitle={t("section.strengths.sub")} />
+            <StrengthCards />
           </div>
         </section>
 
