@@ -19,6 +19,7 @@ import { SectionDivider } from "@/components/SectionDivider";
 import { Magnetic } from "@/components/Magnetic";
 import { TestimonialsSlider } from "@/components/TestimonialsSlider";
 import { StrengthCards } from "@/components/StrengthCards";
+import { DevTerminal } from "@/components/DevTerminal";
 import * as LucideIcons from "lucide-react";
 import { services } from "@/lib/content";
 
@@ -172,8 +173,11 @@ const Index = () => {
               </motion.div>
             </FadeIn>
 
-            <FadeIn delay={0.4} className="order-1 lg:order-2 flex justify-center">
+            <FadeIn delay={0.4} className="order-1 lg:order-2 flex flex-col items-center gap-6">
               <AnimatedProfileImage />
+              <div className="hidden md:block w-full">
+                <DevTerminal />
+              </div>
             </FadeIn>
           </div>
 
