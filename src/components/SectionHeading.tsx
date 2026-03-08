@@ -1,21 +1,18 @@
 import { useI18n } from "@/lib/i18n";
-import { FadeIn } from "./MotionWrapper";
 
-interface SectionHeadingProps {
-  title: string;
-  subtitle?: string;
-  gradient?: boolean;
-}
-
-export function SectionHeading({ title, subtitle, gradient = true }: SectionHeadingProps) {
+export function SectionHeading({ title, subtitle, gradient = true }: { title: string; subtitle?: string; gradient?: boolean }) {
+  const { t } = useI18n();
+  
   return (
-    <FadeIn className="text-center mb-12 md:mb-16">
-      <h2 className={`text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight ${gradient ? "gradient-text" : ""}`}>
+    <div className="text-center mb-12">
+      <h2 className={`text-4xl font-bold mb-4 ${gradient ? 'bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent' : ''}`}>
         {title}
       </h2>
       {subtitle && (
-        <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">{subtitle}</p>
+        <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+          {subtitle}
+        </p>
       )}
-    </FadeIn>
+    </div>
   );
 }
