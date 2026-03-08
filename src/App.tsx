@@ -8,6 +8,9 @@ import { I18nProvider } from "@/lib/i18n";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TouchBubbles } from "@/components/TouchBubbles";
+import { CursorFollower } from "@/components/CursorFollower";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { GrainOverlay } from "@/components/GrainOverlay";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
@@ -46,7 +49,10 @@ const App = () => (
         <Toaster />
         <Sonner />
         <TouchBubbles />
+        <CursorFollower />
+        <GrainOverlay />
         <BrowserRouter>
+          <ScrollProgress />
           <Header />
           <main className="pt-0">
             <AnimatedRoutes />
