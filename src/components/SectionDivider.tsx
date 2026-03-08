@@ -2,16 +2,19 @@ import { motion } from "framer-motion";
 
 export function SectionDivider() {
   return (
-    <div className="relative h-px w-full overflow-hidden">
-      <motion.div
-        className="absolute inset-0 h-px"
-        style={{
-          background: `linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), hsl(var(--accent) / 0.3), hsl(var(--primary) / 0.4), transparent)`,
-          backgroundSize: "200% 100%",
-        }}
-        animate={{ backgroundPosition: ["0% 0%", "200% 0%"] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-      />
+    <div className="relative py-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <motion.div
+          className="h-px w-full"
+          style={{
+            background: `linear-gradient(90deg, transparent, hsl(var(--border)), transparent)`,
+          }}
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        />
+      </div>
     </div>
   );
 }

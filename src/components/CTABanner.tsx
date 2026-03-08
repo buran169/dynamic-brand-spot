@@ -4,47 +4,41 @@ import { FadeIn } from "./MotionWrapper";
 import { ArrowRight } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { motion } from "framer-motion";
-import { Magnetic } from "./Magnetic";
 
 export function CTABanner() {
   const { t } = useI18n();
 
   return (
     <section className="section-padding">
-      <FadeIn className="max-w-4xl mx-auto text-center p-10 md:p-16 rounded-3xl relative overflow-hidden touch-ripple">
-        {/* Animated gradient background */}
-        <motion.div
-          className="absolute inset-0 rounded-3xl"
-          style={{
-            background: `linear-gradient(135deg, hsl(var(--primary) / 0.08), hsl(var(--accent) / 0.08), hsl(var(--primary) / 0.05))`,
-          }}
-          animate={{
-            backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <div className="absolute inset-0 rounded-3xl border border-primary/20" />
-        
-        <div className="relative z-10">
-          <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 gradient-text">{t("cta.title")}</h2>
-          <p className="text-muted-foreground mb-6">{t("cta.subtitle")}</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Magnetic strength={0.2}>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }} transition={{ type: "spring", stiffness: 400 }}>
-                <Button asChild size="lg" className="rounded-full glow btn-pulse touch-glow">
+      <FadeIn className="max-w-4xl mx-auto text-center px-4">
+        <div className="relative p-12 md:p-20 rounded-3xl overflow-hidden">
+          {/* Gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5 rounded-3xl" />
+          <div className="absolute inset-0 rounded-3xl border border-border/50" />
+          
+          {/* Subtle glow */}
+          <div
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] opacity-30"
+            style={{ background: `radial-gradient(ellipse, hsl(var(--primary) / 0.1) 0%, transparent 70%)` }}
+          />
+          
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tightest gradient-text">{t("cta.title")}</h2>
+            <p className="text-muted-foreground mb-8 text-[15px]">{t("cta.subtitle")}</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+                <Button asChild size="lg" className="rounded-full h-11 px-8 text-sm glow">
                   <Link to="/contact">
-                    {t("cta.quote")} <ArrowRight className="ml-1 h-4 w-4" />
+                    {t("cta.quote")} <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </motion.div>
-            </Magnetic>
-            <Magnetic strength={0.2}>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }} transition={{ type: "spring", stiffness: 400 }}>
-                <Button asChild variant="outline" size="lg" className="rounded-full btn-pulse touch-glow">
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+                <Button asChild variant="outline" size="lg" className="rounded-full h-11 px-8 text-sm">
                   <Link to="/services">{t("hero.services")}</Link>
                 </Button>
               </motion.div>
-            </Magnetic>
+            </div>
           </div>
         </div>
       </FadeIn>
