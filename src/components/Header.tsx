@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/content";
 import { useI18n } from "@/lib/i18n";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
+import { CommandMenu } from "./CommandMenu";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
