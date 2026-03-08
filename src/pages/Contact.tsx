@@ -65,6 +65,10 @@ const ContactPage = () => {
               <FadeIn>
                 <h3 className="font-display font-semibold text-lg mb-4">{t("contact.quick")}</h3>
                 <ContactButtons />
+                <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  {t("contact.response")}
+                </div>
               </FadeIn>
 
               <FadeIn delay={0.2}>
