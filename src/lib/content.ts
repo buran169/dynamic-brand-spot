@@ -121,7 +121,7 @@ export const services = [
     icon: "CreditCard",
     title: "Digital Subscription Assistance",
     desc: "Official subscription purchase assistance and setup guidance.",
-    pricing: "Contact for quote",
+    pricing: "Contact for pricing",
     features: [
       "Official subscription purchase assistance",
       "Gift card / plan guidance (where available)",
