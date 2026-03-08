@@ -91,8 +91,9 @@ const ContactPage = () => {
                       placeholder={t("contact.name")}
                       value={form.name}
                       onChange={(e) => update("name", e.target.value)}
-                      className="rounded-xl"
+                      className="rounded-xl h-12"
                       aria-label={t("contact.name")}
+                      autoComplete="name"
                     />
                     {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
                   </div>
