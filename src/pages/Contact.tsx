@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { z } from "zod";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,6 +9,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { ContactButtons } from "@/components/ContactButtons";
 import { FadeIn } from "@/components/MotionWrapper";
 import { services, budgetRanges } from "@/lib/content";
+import { useI18n } from "@/lib/i18n";
 import { useToast } from "@/hooks/use-toast";
 import { Send } from "lucide-react";
 
@@ -17,10 +19,11 @@ const formSchema = z.object({
   service: z.string().min(1, "Select a service"),
   budget: z.string().min(1, "Select a budget range"),
   message: z.string().trim().min(1, "Message is required").max(2000),
-  honeypot: z.string().max(0), // spam trap
+  honeypot: z.string().max(0),
 });
 
 const ContactPage = () => {
+  const { t } = useI18n();
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", service: "", budget: "", message: "", honeypot: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -35,12 +38,11 @@ const ContactPage = () => {
       setErrors(fieldErrors);
       return;
     }
-    if (form.honeypot) return; // bot detected
+    if (form.honeypot) return;
     setSending(true);
-    // Simulated send
     await new Promise((r) => setTimeout(r, 1000));
     console.log("Contact form submission:", result.data);
-    toast({ title: "Message sent!", description: "I'll get back to you as soon as possible." });
+    toast({ title: t("contact.sent"), description: t("contact.sentDesc") });
     setForm({ name: "", email: "", service: "", budget: "", message: "", honeypot: "" });
     setErrors({});
     setSending(false);
@@ -55,19 +57,22 @@ const ContactPage = () => {
     <div className="min-h-screen pt-24">
       <section className="section-padding">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <SectionHeading title="Get In Touch" subtitle="Let's discuss your project" />
+          <SectionHeading title={t("contact.title")} subtitle={t("contact.sub")} />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact buttons */}
             <FadeIn>
-              <h3 className="font-display font-semibold text-lg mb-4">Quick Contact</h3>
+              <h3 className="font-display font-semibold text-lg mb-4">{t("contact.quick")}</h3>
               <ContactButtons />
             </FadeIn>
 
-            {/* Form */}
             <FadeIn delay={0.2}>
-              <form onSubmit={handleSubmit} className="space-y-4 p-6 rounded-2xl glass">
-                {/* Honeypot */}
+              <motion.form
+                onSubmit={handleSubmit}
+                className="space-y-4 p-6 rounded-2xl glass"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
                 <input
                   type="text"
                   name="company_address"
@@ -81,11 +86,11 @@ const ContactPage = () => {
 
                 <div>
                   <Input
-                    placeholder="Your Name"
+                    placeholder={t("contact.name")}
                     value={form.name}
                     onChange={(e) => update("name", e.target.value)}
                     className="rounded-xl"
-                    aria-label="Your name"
+                    aria-label={t("contact.name")}
                   />
                   {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
                 </div>
@@ -93,19 +98,19 @@ const ContactPage = () => {
                 <div>
                   <Input
                     type="email"
-                    placeholder="Email Address"
+                    placeholder={t("contact.email")}
                     value={form.email}
                     onChange={(e) => update("email", e.target.value)}
                     className="rounded-xl"
-                    aria-label="Email address"
+                    aria-label={t("contact.email")}
                   />
                   {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
                 </div>
 
                 <div>
                   <Select value={form.service} onValueChange={(v) => update("service", v)}>
-                    <SelectTrigger className="rounded-xl" aria-label="Select service">
-                      <SelectValue placeholder="Select Service" />
+                    <SelectTrigger className="rounded-xl" aria-label={t("contact.service")}>
+                      <SelectValue placeholder={t("contact.service")} />
                     </SelectTrigger>
                     <SelectContent>
                       {services.map((s) => (
@@ -118,8 +123,8 @@ const ContactPage = () => {
 
                 <div>
                   <Select value={form.budget} onValueChange={(v) => update("budget", v)}>
-                    <SelectTrigger className="rounded-xl" aria-label="Budget range">
-                      <SelectValue placeholder="Budget Range" />
+                    <SelectTrigger className="rounded-xl" aria-label={t("contact.budget")}>
+                      <SelectValue placeholder={t("contact.budget")} />
                     </SelectTrigger>
                     <SelectContent>
                       {budgetRanges.map((b) => (
@@ -132,19 +137,21 @@ const ContactPage = () => {
 
                 <div>
                   <Textarea
-                    placeholder="Tell me about your project..."
+                    placeholder={t("contact.message")}
                     value={form.message}
                     onChange={(e) => update("message", e.target.value)}
                     className="rounded-xl min-h-[120px]"
-                    aria-label="Your message"
+                    aria-label={t("contact.message")}
                   />
                   {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
                 </div>
 
-                <Button type="submit" disabled={sending} className="w-full rounded-full" size="lg">
-                  {sending ? "Sending..." : <>Send Message <Send className="ml-1 h-4 w-4" /></>}
-                </Button>
-              </form>
+                <motion.div whileTap={{ scale: 0.97 }}>
+                  <Button type="submit" disabled={sending} className="w-full rounded-full glow" size="lg">
+                    {sending ? t("btn.sending") : <>{t("btn.sendMessage")} <Send className="ml-1 h-4 w-4" /></>}
+                  </Button>
+                </motion.div>
+              </motion.form>
             </FadeIn>
           </div>
         </div>
