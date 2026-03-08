@@ -28,7 +28,7 @@ export function AnimatedProfileImage({ size = "lg" }: { size?: "sm" | "lg" }) {
 
       {/* Rotating ring 2 — opposite direction with dots */}
       <motion.div
-        className="absolute w-[230px] h-[230px] sm:w-[300px] sm:h-[300px] md:w-[380px] md:h-[380px] rounded-full border border-accent/10"
+        className="absolute w-[230px] h-[230px] sm:w-[300px] sm:h-[300px] md:w-[380px] md:h-[380px] rounded-full border-[1.5px] border-primary/25"
         animate={{ rotate: -360 }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
       >
