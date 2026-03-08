@@ -114,7 +114,7 @@ const ContactPage = () => {
 
                   <div>
                     <Select value={form.service} onValueChange={(v) => update("service", v)}>
-                      <SelectTrigger className="rounded-xl" aria-label={t("contact.service")}>
+                      <SelectTrigger className="rounded-xl h-12" aria-label={t("contact.service")}>
                         <SelectValue placeholder={t("contact.service")} />
                       </SelectTrigger>
                       <SelectContent>
