@@ -91,8 +91,9 @@ const ContactPage = () => {
                       placeholder={t("contact.name")}
                       value={form.name}
                       onChange={(e) => update("name", e.target.value)}
-                      className="rounded-xl"
+                      className="rounded-xl h-12"
                       aria-label={t("contact.name")}
+                      autoComplete="name"
                     />
                     {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
                   </div>
@@ -100,18 +101,20 @@ const ContactPage = () => {
                   <div>
                     <Input
                       type="email"
+                      inputMode="email"
                       placeholder={t("contact.email")}
                       value={form.email}
                       onChange={(e) => update("email", e.target.value)}
-                      className="rounded-xl"
+                      className="rounded-xl h-12"
                       aria-label={t("contact.email")}
+                      autoComplete="email"
                     />
                     {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
                   </div>
 
                   <div>
                     <Select value={form.service} onValueChange={(v) => update("service", v)}>
-                      <SelectTrigger className="rounded-xl" aria-label={t("contact.service")}>
+                      <SelectTrigger className="rounded-xl h-12" aria-label={t("contact.service")}>
                         <SelectValue placeholder={t("contact.service")} />
                       </SelectTrigger>
                       <SelectContent>
@@ -125,7 +128,7 @@ const ContactPage = () => {
 
                   <div>
                     <Select value={form.budget} onValueChange={(v) => update("budget", v)}>
-                      <SelectTrigger className="rounded-xl" aria-label={t("contact.budget")}>
+                      <SelectTrigger className="rounded-xl h-12" aria-label={t("contact.budget")}>
                         <SelectValue placeholder={t("contact.budget")} />
                       </SelectTrigger>
                       <SelectContent>
@@ -149,7 +152,7 @@ const ContactPage = () => {
                   </div>
 
                   <motion.div whileTap={{ scale: 0.97 }}>
-                    <Button type="submit" disabled={sending} className="w-full rounded-full glow" size="lg">
+                    <Button type="submit" disabled={sending} className="w-full rounded-full glow h-12 text-base touch-target" size="lg">
                       {sending ? t("btn.sending") : <>{t("btn.sendMessage")} <Send className="ml-1 h-4 w-4" /></>}
                     </Button>
                   </motion.div>

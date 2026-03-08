@@ -25,7 +25,7 @@ export function BackToTop() {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full glass glow-sm flex items-center justify-center group touch-glow"
+          className="fixed bottom-20 md:bottom-6 left-4 md:left-auto md:right-6 z-50 w-12 h-12 rounded-full glass glow-sm flex items-center justify-center group touch-glow touch-target"
           aria-label="Back to top"
         >
           {/* Progress ring */}
