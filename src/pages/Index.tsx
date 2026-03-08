@@ -223,7 +223,7 @@ const Index = () => {
             </motion.div>
 
             <motion.div
-              className="order-1 lg:order-2 flex flex-col items-center gap-6 sm:gap-8"
+              className="order-1 lg:order-2 flex flex-col items-center gap-6 sm:gap-8 mt-8 sm:mt-12 lg:mt-16"
               initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               transition={{ delay: 0.3, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
