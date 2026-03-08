@@ -50,7 +50,7 @@ export function TouchBubbles() {
               width: 60,
               height: 60,
             }}
-            className="rounded-full border-[1.5px] border-primary/25"
+            className="rounded-full border-[1.5px] border-accent/30"
           />
         ))}
       </AnimatePresence>
