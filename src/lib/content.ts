@@ -6,7 +6,7 @@ export const siteConfig = {
   name: "Shahriar Burhan",
   tagline: "Web Developer • Discord Developer • SA-MP Developer • Graphics Designer",
   shortBio: "I build fast websites, Discord automation, SA-MP systems, and clean visual designs.",
-  profileImage: "/images/profile.jpg",
+  profileImage: "/images/profile-styled.jpg",
   profileImageAlt: "Shahriar Burhan",
   showProfileImage: true,
 };
