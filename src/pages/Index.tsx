@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Sparkles, Star } from "lucide-react";
-import { siteConfig, projects, skillCategories, testimonials } from "@/lib/content";
+import { siteConfig, projects, skillCategories } from "@/lib/content";
 import { useI18n } from "@/lib/i18n";
 import { AnimatedProfileImage } from "@/components/AnimatedProfileImage";
 import { SectionHeading } from "@/components/SectionHeading";
