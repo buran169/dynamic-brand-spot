@@ -173,27 +173,49 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Smooth hover for interactive elements */
+/* Global hover lift for all interactive elements */
 a, button, [role="button"] {
-  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), color 0.15s ease, background-color 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease, opacity 0.15s ease;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), color 0.15s ease, background-color 0.15s ease, box-shadow 0.25s ease, border-color 0.2s ease, opacity 0.15s ease;
+}
+a:hover, button:hover, [role="button"]:hover {
+  transform: translateY(-1px);
+}
+a:active, button:active, [role="button"]:active {
+  transform: translateY(0) scale(0.97);
 }
 
-/* Card hover — subtle lift */
+/* Card hover — elevation lift */
 .card-interactive {
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease, border-color 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.3s ease;
   cursor: pointer;
 }
 .card-interactive:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 48px -12px hsl(var(--foreground) / 0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px hsl(var(--foreground) / 0.1), 0 8px 16px -8px hsl(var(--primary) / 0.06);
+}
+.card-interactive:active {
+  transform: translateY(-2px) scale(0.98);
 }
 
 /* Badge subtle hover */
 .badge-interactive {
-  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.15s ease, color 0.15s ease, box-shadow 0.2s ease;
 }
 .badge-interactive:hover {
-  transform: scale(1.04);
+  transform: scale(1.06) translateY(-1px);
+  box-shadow: 0 4px 12px -4px hsl(var(--primary) / 0.15);
+}
+
+/* Global card/section hover lift — applies to any bordered container */
+.hover-lift {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px hsl(var(--foreground) / 0.08);
+}
+.hover-lift:active {
+  transform: translateY(-1px) scale(0.99);
 }
 
 /* Icon interactive */
