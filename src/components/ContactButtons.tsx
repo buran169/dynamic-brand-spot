@@ -15,28 +15,39 @@ export function ContactButtons() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      {contacts.map((c) => (
+      {contacts.map((c, i) => (
         <motion.a
           key={c.label}
           href={c.url}
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ y: -6, scale: 1.03 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          whileHover={{ y: -6, scale: 1.03, boxShadow: "0 16px 40px -8px hsl(var(--accent) / 0.15)" }}
           whileTap={{ scale: 0.93, y: 0 }}
-          transition={{ type: "spring", stiffness: 400, damping: 20 }}
-          className="flex items-center gap-4 p-5 rounded-2xl glass hover:glow transition-all duration-300 group touch-ripple touch-glow"
+          className="flex items-center gap-4 p-5 rounded-2xl glass hover:border-accent/25 transition-all duration-300 group touch-ripple touch-glow"
         >
           <motion.div
-            className={`h-12 w-12 rounded-xl ${c.colorClass} flex items-center justify-center shrink-0 icon-interactive`}
-            whileHover={{ rotate: 10, scale: 1.1 }}
+            className={`h-12 w-12 rounded-xl ${c.colorClass} flex items-center justify-center shrink-0`}
+            whileHover={{ rotate: 12, scale: 1.15 }}
             whileTap={{ rotate: -15, scale: 0.85 }}
+            transition={{ type: "spring", stiffness: 400, damping: 12 }}
           >
             <c.icon className="h-6 w-6 text-primary-foreground" />
           </motion.div>
           <div>
-            <p className="font-display font-semibold group-hover:text-primary transition-colors">{c.label}</p>
+            <p className="font-display font-semibold group-hover:text-accent transition-colors">{c.label}</p>
             <p className="text-xs text-muted-foreground">{t(c.responseKey)}</p>
           </div>
+          <motion.div
+            className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
+            animate={{ x: [0, 4, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <span className="text-accent text-sm">→</span>
+          </motion.div>
         </motion.a>
       ))}
     </div>
