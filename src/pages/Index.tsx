@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, User } from "lucide-react";
 import { siteConfig, projects, skillCategories } from "@/lib/content";
 import { useI18n } from "@/lib/i18n";
 import { AnimatedProfileImage } from "@/components/AnimatedProfileImage";
