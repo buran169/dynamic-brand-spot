@@ -195,7 +195,6 @@ const Index = () => {
                   </Button>
                 </motion.div>
               </motion.div>
-              </motion.div>
 
               {/* Stats */}
               <motion.div
