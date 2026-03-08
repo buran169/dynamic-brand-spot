@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Sparkles, Star, CheckCircle2 } from "lucide-react";
 import { siteConfig, projects, skillCategories, testimonials } from "@/lib/content";
 import { useI18n } from "@/lib/i18n";
 import { AnimatedProfileImage } from "@/components/AnimatedProfileImage";
@@ -13,6 +13,9 @@ import { SkillChip } from "@/components/SkillBadge";
 import { CTABanner } from "@/components/CTABanner";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/MotionWrapper";
 import { PageTransition } from "@/components/PageTransition";
+import { TypeWriter } from "@/components/TypeWriter";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { SectionDivider } from "@/components/SectionDivider";
 import * as LucideIcons from "lucide-react";
 import { services } from "@/lib/content";
 
@@ -23,6 +26,15 @@ const trustKeys = [
   { icon: "Shield", titleKey: "trust.secure", descKey: "trust.secure.desc" },
 ];
 
+const roles = ["Web Developer", "Discord Developer", "SA-MP Developer", "Graphics Designer"];
+
+const heroStats = [
+  { target: 50, suffix: "+", labelKey: "stat.projects" },
+  { target: 30, suffix: "+", labelKey: "stat.clients" },
+  { target: 5, suffix: "+", labelKey: "stat.experience" },
+  { target: 20, suffix: "+", labelKey: "stat.technologies" },
+];
+
 const Index = () => {
   const { t } = useI18n();
 
@@ -31,26 +43,27 @@ const Index = () => {
       <div className="min-h-screen">
         {/* Hero */}
         <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-          {/* Animated mesh background */}
+          {/* Animated mesh background with floating blobs */}
           <div className="absolute inset-0 overflow-hidden">
             <motion.div
-              className="absolute top-0 -left-40 w-[500px] h-[500px] rounded-full blur-[100px]"
-              style={{ background: `radial-gradient(circle, hsl(var(--primary) / 0.12), transparent 70%)` }}
-              animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
-              transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-              className="absolute bottom-0 -right-40 w-[600px] h-[600px] rounded-full blur-[120px]"
-              style={{ background: `radial-gradient(circle, hsl(var(--accent) / 0.1), transparent 70%)` }}
-              animate={{ x: [0, -50, 0], y: [0, -60, 0] }}
+              className="absolute top-[-10%] -left-[15%] w-[500px] h-[500px] rounded-full blur-[120px]"
+              style={{ background: `radial-gradient(circle, hsl(var(--primary) / 0.15), transparent 70%)` }}
+              animate={{ x: [0, 80, 0], y: [0, 60, 0], scale: [1, 1.2, 1] }}
               transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
             />
             <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full blur-[80px]"
-              style={{ background: `radial-gradient(circle, hsl(var(--primary) / 0.06), transparent 70%)` }}
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute bottom-[-5%] -right-[10%] w-[600px] h-[600px] rounded-full blur-[140px]"
+              style={{ background: `radial-gradient(circle, hsl(var(--accent) / 0.12), transparent 70%)` }}
+              animate={{ x: [0, -70, 0], y: [0, -80, 0], scale: [1, 1.15, 1] }}
+              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
             />
+            <motion.div
+              className="absolute top-[40%] left-[30%] w-[350px] h-[350px] rounded-full blur-[100px]"
+              style={{ background: `radial-gradient(circle, hsl(var(--primary) / 0.08), transparent 70%)` }}
+              animate={{ scale: [1, 1.4, 1], rotate: [0, 180, 360] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Animated grid */}
             <div
               className="absolute inset-0 opacity-[0.03]"
               style={{
@@ -58,12 +71,27 @@ const Index = () => {
                 backgroundSize: "60px 60px",
               }}
             />
+            {/* Animated radial glow behind hero */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
+              style={{ background: `radial-gradient(circle, hsl(var(--primary) / 0.04) 0%, transparent 60%)` }}
+              animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.3, 0.6, 0.3] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            />
           </div>
 
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10">
             <FadeIn className="order-2 lg:order-1 text-center lg:text-left">
+              {/* Availability badge */}
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                <Badge variant="secondary" className="mb-6 gap-1.5 px-4 py-1.5 text-xs font-medium rounded-full border-primary/20 bg-primary/5">
+                <Badge variant="secondary" className="mb-6 gap-1.5 px-4 py-1.5 text-xs font-medium rounded-full border-primary/20 bg-primary/5 glass">
+                  <motion.div
+                    className="w-2 h-2 rounded-full bg-emerald-400 relative"
+                    animate={{ scale: [1, 1.3, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    <div className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-40" />
+                  </motion.div>
                   <motion.span animate={{ rotate: [0, 15, -15, 0] }} transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}>
                     <Sparkles className="h-3.5 w-3.5 text-primary" />
                   </motion.span>
@@ -72,7 +100,7 @@ const Index = () => {
               </motion.div>
 
               <motion.h1
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold mb-6 leading-[1.1] tracking-tight"
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold mb-4 leading-[1.1] tracking-tight"
                 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.7 }}
               >
                 {t("hero.greeting")}{" "}
@@ -85,17 +113,18 @@ const Index = () => {
                 </span>
               </motion.h1>
 
-              <motion.p className="text-base sm:text-lg text-muted-foreground mb-2 font-medium" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-                {t("hero.tagline")}
-              </motion.p>
+              {/* Typing effect for roles */}
+              <motion.div className="text-lg sm:text-xl text-primary/80 font-medium mb-2 h-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+                <TypeWriter words={roles} className="font-display" />
+              </motion.div>
 
-              <motion.p className="text-muted-foreground mb-10 max-w-lg mx-auto lg:mx-0 text-sm sm:text-base leading-relaxed" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
+              <motion.p className="text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0 text-sm sm:text-base leading-relaxed" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
                 {t("hero.bio")}
               </motion.p>
 
               <motion.div className="flex flex-wrap gap-3 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
-                  <Button asChild size="lg" className="rounded-full px-8 glow">
+                  <Button asChild size="lg" className="rounded-full px-8 glow magnetic-btn">
                     <Link to="/contact">
                       {t("nav.hire")}
                       <motion.span className="ml-1 inline-block" animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
@@ -105,15 +134,32 @@ const Index = () => {
                   </Button>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
-                  <Button asChild variant="outline" size="lg" className="rounded-full px-8 border-primary/20 hover:border-primary/40">
+                  <Button asChild variant="outline" size="lg" className="rounded-full px-8 border-primary/20 hover:border-primary/40 magnetic-btn">
                     <Link to="/services">{t("hero.services")}</Link>
                   </Button>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
-                  <Button asChild variant="ghost" size="lg" className="rounded-full px-8">
+                  <Button asChild variant="ghost" size="lg" className="rounded-full px-8 magnetic-btn">
                     <Link to="/projects">{t("hero.work")}</Link>
                   </Button>
                 </motion.div>
+              </motion.div>
+
+              {/* Quick stats */}
+              <motion.div
+                className="grid grid-cols-4 gap-4 mt-10 pt-8 border-t border-border/50"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.9 }}
+              >
+                {heroStats.map((stat) => (
+                  <AnimatedCounter
+                    key={stat.labelKey}
+                    target={stat.target}
+                    suffix={stat.suffix}
+                    label={t(stat.labelKey)}
+                  />
+                ))}
               </motion.div>
             </FadeIn>
 
@@ -134,6 +180,8 @@ const Index = () => {
           </motion.div>
         </section>
 
+        <SectionDivider />
+
         {/* Trust Badges */}
         <section className="section-padding border-y border-border bg-card/30">
           <StaggerContainer className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -141,8 +189,8 @@ const Index = () => {
               const Icon = (LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[b.icon] || LucideIcons.Box;
               return (
                 <StaggerItem key={b.titleKey}>
-                  <motion.div whileHover={{ y: -4 }} whileTap={{ scale: 0.97 }} className="text-center p-6 rounded-2xl glass cursor-default">
-                    <motion.div whileHover={{ rotate: 10, scale: 1.1 }} className="h-10 w-10 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                  <motion.div whileHover={{ y: -4 }} whileTap={{ scale: 0.97 }} className="text-center p-6 rounded-2xl glass gradient-border-card cursor-default group">
+                    <motion.div whileHover={{ rotate: 10, scale: 1.1 }} className="h-10 w-10 mx-auto rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
                       <Icon className="h-5 w-5 text-primary" />
                     </motion.div>
                     <h3 className="font-display font-semibold text-sm mb-1">{t(b.titleKey)}</h3>
@@ -153,6 +201,8 @@ const Index = () => {
             })}
           </StaggerContainer>
         </section>
+
+        <SectionDivider />
 
         {/* Services Preview */}
         <section className="section-padding">
@@ -168,6 +218,8 @@ const Index = () => {
           </div>
         </section>
 
+        <SectionDivider />
+
         {/* Featured Projects */}
         <section className="section-padding bg-card/30">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -181,13 +233,15 @@ const Index = () => {
             </div>
             <FadeIn className="text-center mt-8">
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }} className="inline-block">
-                <Button asChild variant="outline" className="rounded-full">
+                <Button asChild variant="outline" className="rounded-full magnetic-btn">
                   <Link to="/projects">{t("btn.viewAll")} <ArrowRight className="ml-1 h-4 w-4" /></Link>
                 </Button>
               </motion.div>
             </FadeIn>
           </div>
         </section>
+
+        <SectionDivider />
 
         {/* Skills */}
         <section className="section-padding">
@@ -205,6 +259,8 @@ const Index = () => {
           </div>
         </section>
 
+        <SectionDivider />
+
         {/* Testimonials */}
         <section className="section-padding bg-card/30">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -212,16 +268,21 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {testimonials.map((te, i) => (
                 <FadeIn key={te.name} delay={i * 0.1}>
-                  <motion.div whileHover={{ y: -6 }} whileTap={{ scale: 0.98 }} className="p-6 rounded-2xl glass cursor-default">
+                  <motion.div whileHover={{ y: -6 }} whileTap={{ scale: 0.98 }} className="p-6 rounded-2xl glass gradient-border-card cursor-default">
                     <div className="flex gap-0.5 mb-3">
                       {Array.from({ length: te.rating }).map((_, j) => (
                         <Star key={j} className="h-4 w-4 text-primary fill-primary" />
                       ))}
                     </div>
                     <p className="text-sm text-muted-foreground mb-4 italic">"{te.text}"</p>
-                    <div>
-                      <p className="font-display font-semibold text-sm">{te.name}</p>
-                      <p className="text-xs text-muted-foreground">{te.role}</p>
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-xs font-bold text-primary">
+                        {te.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-display font-semibold text-sm">{te.name}</p>
+                        <p className="text-xs text-muted-foreground">{te.role}</p>
+                      </div>
                     </div>
                   </motion.div>
                 </FadeIn>
@@ -229,6 +290,8 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        <SectionDivider />
 
         <CTABanner />
       </div>
