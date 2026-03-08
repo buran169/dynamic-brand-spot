@@ -94,7 +94,7 @@ export const services = [
     icon: "MessageSquare",
     title: "Discord Development",
     desc: "Custom bots with moderation, tickets, logging, and full server setup with automation.",
-    pricing: "Starting from $50",
+    pricing: "Starting from $10",
     features: ["Custom Bot Development", "Server Setup & Automation", "Moderation & Ticket Systems", "Role Automation & Logging"],
     category: "development",
   },
