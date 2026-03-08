@@ -61,6 +61,11 @@ const translations: Record<string, Record<Lang, string>> = {
   "section.howIWork.sub": { en: "A streamlined process for great results", bn: "দুর্দান্ত ফলাফলের জন্য সুবিন্যস্ত প্রক্রিয়া" },
   "section.faq": { en: "FAQ", bn: "প্রশ্নোত্তর" },
   "section.faq.sub": { en: "Common questions answered", bn: "সাধারণ প্রশ্নের উত্তর" },
+  "section.comparison": { en: "Service Comparison", bn: "সেবা তুলনা" },
+  "section.comparison.sub": { en: "Compare features across services", bn: "সেবাগুলোর মধ্যে ফিচার তুলনা করুন" },
+  "section.strengths": { en: "Why Choose Me", bn: "কেন আমাকে বেছে নেবেন" },
+  "section.strengths.sub": { en: "What makes my service different", bn: "আমার সেবা কেন আলাদা" },
+  "contact.response": { en: "Usually replies within a few hours", bn: "সাধারণত কয়েক ঘণ্টার মধ্যে উত্তর দেন" },
 
   // CTA
   "cta.title": { en: "Ready to start your project?", bn: "আপনার প্রজেক্ট শুরু করতে প্রস্তুত?" },
