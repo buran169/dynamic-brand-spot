@@ -16,14 +16,15 @@ export function ServiceCard({ service }: { service: Service }) {
   return (
     <motion.div
       whileHover={{ y: -8 }}
-      whileTap={{ scale: 0.97 }}
+      whileTap={{ scale: 0.96, y: -2 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-      <Card className="h-full glass hover:glow transition-all duration-300 rounded-2xl group">
+      <Card className="h-full glass hover:glow transition-all duration-300 rounded-2xl group card-interactive touch-ripple">
         <CardHeader>
           <motion.div
-            className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors"
-            whileHover={{ rotate: 5, scale: 1.1 }}
+            className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors icon-interactive"
+            whileHover={{ rotate: 10, scale: 1.15 }}
+            whileTap={{ rotate: -10, scale: 0.9 }}
           >
             <Icon className="h-6 w-6 text-primary" />
           </motion.div>
@@ -33,15 +34,15 @@ export function ServiceCard({ service }: { service: Service }) {
         <CardContent className="space-y-4">
           <div className="flex flex-wrap gap-1.5">
             {service.features.map((f) => (
-              <Badge key={f} variant="secondary" className="text-xs font-normal">{f}</Badge>
+              <Badge key={f} variant="secondary" className="text-xs font-normal badge-interactive cursor-default">{f}</Badge>
             ))}
           </div>
           <p className="text-sm font-semibold text-primary">{service.pricing}</p>
           {service.disclaimer && (
             <p className="text-xs text-muted-foreground italic border-t border-border pt-3">{service.disclaimer}</p>
           )}
-          <motion.div whileTap={{ scale: 0.95 }}>
-            <Button asChild variant="outline" size="sm" className="w-full rounded-full hover:bg-primary/5">
+          <motion.div whileTap={{ scale: 0.92 }} whileHover={{ scale: 1.03 }}>
+            <Button asChild variant="outline" size="sm" className="w-full rounded-full hover:bg-primary/5 btn-pulse touch-glow">
               <Link to="/contact">{t("btn.requestQuote")}</Link>
             </Button>
           </motion.div>

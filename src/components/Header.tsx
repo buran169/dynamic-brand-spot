@@ -26,7 +26,7 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-strong">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="font-display font-bold text-lg gradient-text tracking-tight">
+        <Link to="/" className="font-display font-bold text-lg gradient-text tracking-tight touch-ripple rounded-lg px-2 py-1">
           {siteConfig.name}
         </Link>
 
@@ -37,7 +37,7 @@ export function Header() {
               key={l.href}
               to={l.href}
               className={cn(
-                "px-3 py-2 text-sm rounded-lg transition-all duration-200",
+                "px-3 py-2 text-sm rounded-lg nav-link-animated touch-ripple",
                 location.pathname === l.href
                   ? "text-primary font-medium bg-primary/10"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted"
@@ -48,18 +48,22 @@ export function Header() {
           ))}
           <LanguageToggle />
           <ThemeToggle />
-          <Button asChild size="sm" className="ml-2 rounded-full glow-sm">
-            <Link to="/contact">{t("nav.hire")}</Link>
-          </Button>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }}>
+            <Button asChild size="sm" className="ml-2 rounded-full glow-sm btn-pulse">
+              <Link to="/contact">{t("nav.hire")}</Link>
+            </Button>
+          </motion.div>
         </nav>
 
         {/* Mobile */}
         <div className="flex md:hidden items-center gap-1.5">
           <LanguageToggle />
           <ThemeToggle />
-          <Button variant="ghost" size="icon" onClick={() => setOpen(!open)} aria-label="Menu">
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+          <motion.div whileTap={{ rotate: 90, scale: 0.85 }} transition={{ type: "spring", stiffness: 400 }}>
+            <Button variant="ghost" size="icon" onClick={() => setOpen(!open)} aria-label="Menu" className="touch-ripple rounded-xl">
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </motion.div>
         </div>
       </div>
 
@@ -72,25 +76,33 @@ export function Header() {
             className="md:hidden glass-strong border-t border-border overflow-hidden"
           >
             <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-2">
-              {navKeys.map((l) => (
-                <motion.div key={l.href} whileTap={{ scale: 0.97 }}>
+              {navKeys.map((l, i) => (
+                <motion.div
+                  key={l.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05, type: "spring", stiffness: 300 }}
+                  whileTap={{ scale: 0.95, x: 8 }}
+                >
                   <Link
                     to={l.href}
                     onClick={() => setOpen(false)}
                     className={cn(
-                      "block px-4 py-2.5 rounded-xl text-sm transition-all",
+                      "block px-4 py-2.5 rounded-xl text-sm touch-ripple",
                       location.pathname === l.href
                         ? "text-primary font-medium bg-primary/10"
-                        : "text-muted-foreground hover:text-foreground active:bg-muted"
+                        : "text-muted-foreground hover:text-foreground"
                     )}
                   >
                     {t(l.key)}
                   </Link>
                 </motion.div>
               ))}
-              <Button asChild size="sm" className="rounded-full mt-2">
-                <Link to="/contact" onClick={() => setOpen(false)}>{t("nav.hire")}</Link>
-              </Button>
+              <motion.div whileTap={{ scale: 0.95 }}>
+                <Button asChild size="sm" className="rounded-full mt-2 btn-pulse">
+                  <Link to="/contact" onClick={() => setOpen(false)}>{t("nav.hire")}</Link>
+                </Button>
+              </motion.div>
             </div>
           </motion.nav>
         )}

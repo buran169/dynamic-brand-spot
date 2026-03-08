@@ -21,13 +21,15 @@ export function ContactButtons() {
           href={c.url}
           target="_blank"
           rel="noopener noreferrer"
-          whileHover={{ y: -4, scale: 1.02 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-4 p-5 rounded-2xl glass hover:glow transition-all duration-300 group"
+          whileHover={{ y: -6, scale: 1.03 }}
+          whileTap={{ scale: 0.93, y: 0 }}
+          transition={{ type: "spring", stiffness: 400, damping: 20 }}
+          className="flex items-center gap-4 p-5 rounded-2xl glass hover:glow transition-all duration-300 group touch-ripple touch-glow"
         >
           <motion.div
-            className={`h-12 w-12 rounded-xl ${c.colorClass} flex items-center justify-center shrink-0`}
-            whileHover={{ rotate: 5 }}
+            className={`h-12 w-12 rounded-xl ${c.colorClass} flex items-center justify-center shrink-0 icon-interactive`}
+            whileHover={{ rotate: 10, scale: 1.1 }}
+            whileTap={{ rotate: -15, scale: 0.85 }}
           >
             <c.icon className="h-6 w-6 text-primary-foreground" />
           </motion.div>

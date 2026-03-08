@@ -10,7 +10,7 @@ export function CTABanner() {
 
   return (
     <section className="section-padding">
-      <FadeIn className="max-w-4xl mx-auto text-center p-10 md:p-16 rounded-3xl relative overflow-hidden">
+      <FadeIn className="max-w-4xl mx-auto text-center p-10 md:p-16 rounded-3xl relative overflow-hidden touch-ripple">
         {/* Animated gradient background */}
         <motion.div
           className="absolute inset-0 rounded-3xl"
@@ -28,15 +28,15 @@ export function CTABanner() {
           <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 gradient-text">{t("cta.title")}</h2>
           <p className="text-muted-foreground mb-6">{t("cta.subtitle")}</p>
           <div className="flex flex-wrap justify-center gap-3">
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Button asChild size="lg" className="rounded-full glow">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }} transition={{ type: "spring", stiffness: 400 }}>
+              <Button asChild size="lg" className="rounded-full glow btn-pulse touch-glow">
                 <Link to="/contact">
                   {t("cta.quote")} <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Button asChild variant="outline" size="lg" className="rounded-full">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.92 }} transition={{ type: "spring", stiffness: 400 }}>
+              <Button asChild variant="outline" size="lg" className="rounded-full btn-pulse touch-glow">
                 <Link to="/services">{t("hero.services")}</Link>
               </Button>
             </motion.div>
