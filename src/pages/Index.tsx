@@ -32,8 +32,8 @@ const trustKeys = [
 const roles = ["Web Developer", "Discord Developer", "SA-MP Developer", "Graphics Designer"];
 
 const heroStats = [
-  { target: 4, suffix: "+", labelKey: "stat.projects" },
-  { target: 3, suffix: "+", labelKey: "stat.clients" },
+  { target: 7, suffix: "+", labelKey: "stat.projects" },
+  { target: 6, suffix: "+", labelKey: "stat.clients" },
   { target: 5, suffix: "+", labelKey: "stat.experience" },
   { target: 20, suffix: "+", labelKey: "stat.technologies" },
 ];
