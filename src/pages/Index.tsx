@@ -19,6 +19,7 @@ import { SectionDivider } from "@/components/SectionDivider";
 import { Magnetic } from "@/components/Magnetic";
 import { TestimonialsSlider } from "@/components/TestimonialsSlider";
 import { StrengthCards } from "@/components/StrengthCards";
+import { DevTerminal } from "@/components/DevTerminal";
 import * as LucideIcons from "lucide-react";
 import { services } from "@/lib/content";
 
