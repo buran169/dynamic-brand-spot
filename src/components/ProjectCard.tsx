@@ -14,10 +14,10 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.div
       whileHover={{ y: -8 }}
-      whileTap={{ scale: 0.97 }}
+      whileTap={{ scale: 0.96, y: -2 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-      <Card className="h-full glass hover:glow transition-all duration-300 rounded-2xl overflow-hidden group">
+      <Card className="h-full glass hover:glow transition-all duration-300 rounded-2xl overflow-hidden group card-interactive touch-ripple">
         {/* Gradient thumbnail */}
         <div className={`h-40 bg-gradient-to-br ${project.gradient} opacity-80 group-hover:opacity-100 transition-opacity duration-300 relative overflow-hidden`}>
           <motion.div
@@ -30,15 +30,15 @@ export function ProjectCard({ project }: { project: Project }) {
           <CardTitle className="font-display text-lg">{project.title}</CardTitle>
           <div className="flex flex-wrap gap-1.5">
             {project.tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-xs font-normal">{tag}</Badge>
+              <Badge key={tag} variant="secondary" className="text-xs font-normal badge-interactive cursor-default">{tag}</Badge>
             ))}
           </div>
         </CardHeader>
         <CardContent>
           <Dialog>
             <DialogTrigger asChild>
-              <motion.div whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" size="sm" className="w-full rounded-full hover:bg-primary/5">
+              <motion.div whileTap={{ scale: 0.92 }} whileHover={{ scale: 1.03 }}>
+                <Button variant="outline" size="sm" className="w-full rounded-full hover:bg-primary/5 btn-pulse touch-glow">
                   {t("btn.viewDetails")}
                 </Button>
               </motion.div>
@@ -59,7 +59,7 @@ export function ProjectCard({ project }: { project: Project }) {
                 <div>
                   <h4 className="font-semibold text-primary mb-1">{t("project.stack")}</h4>
                   <div className="flex flex-wrap gap-1.5">
-                    {project.stack.map((s) => <Badge key={s} variant="secondary">{s}</Badge>)}
+                    {project.stack.map((s) => <Badge key={s} variant="secondary" className="badge-interactive">{s}</Badge>)}
                   </div>
                 </div>
                 <div>
