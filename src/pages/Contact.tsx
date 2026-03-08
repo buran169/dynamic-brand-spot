@@ -152,7 +152,7 @@ const ContactPage = () => {
                   </div>
 
                   <motion.div whileTap={{ scale: 0.97 }}>
-                    <Button type="submit" disabled={sending} className="w-full rounded-full glow" size="lg">
+                    <Button type="submit" disabled={sending} className="w-full rounded-full glow h-12 text-base touch-target" size="lg">
                       {sending ? t("btn.sending") : <>{t("btn.sendMessage")} <Send className="ml-1 h-4 w-4" /></>}
                     </Button>
                   </motion.div>
