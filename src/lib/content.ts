@@ -85,7 +85,7 @@ export const services = [
     icon: "Globe",
     title: "Web Development",
     desc: "Landing pages, business websites, and full-stack features with auth, dashboards, and forms.",
-    pricing: "Starting from $150",
+    pricing: "Starting from $12",
     features: ["Landing Page / Business Website", "Full-stack features (auth, dashboard, forms)", "SEO & Performance Optimization", "Responsive Design"],
     category: "development",
   },
