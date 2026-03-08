@@ -17,6 +17,8 @@ import { TypeWriter } from "@/components/TypeWriter";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { SectionDivider } from "@/components/SectionDivider";
 import { Magnetic } from "@/components/Magnetic";
+import { TestimonialsSlider } from "@/components/TestimonialsSlider";
+import { StrengthCards } from "@/components/StrengthCards";
 import * as LucideIcons from "lucide-react";
 import { services } from "@/lib/content";
 
