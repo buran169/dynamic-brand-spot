@@ -11,13 +11,13 @@ const ProjectsPage = () => {
 
   return (
     <PageTransition variant="slideLeft">
-      <div className="min-h-screen pt-24">
+      <div className="min-h-screen pt-16 sm:pt-20">
         <section className="section-padding">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <SectionHeading title={t("nav.projects")} subtitle={t("section.projects.sub2")} />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {projects.map((p, i) => (
-                <FadeIn key={p.id} delay={i * 0.08}>
+                <FadeIn key={p.id} delay={i * 0.06}>
                   <ProjectCard project={p} />
                 </FadeIn>
               ))}

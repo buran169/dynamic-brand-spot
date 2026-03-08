@@ -31,58 +31,34 @@ const AboutPage = () => {
 
   return (
     <PageTransition variant="fade">
-      <div className="min-h-screen pt-24">
+      <div className="min-h-screen pt-16 sm:pt-20">
         <section className="section-padding relative overflow-hidden">
-          <motion.div
-            className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[120px]"
-            style={{ background: `radial-gradient(circle, hsl(var(--primary) / 0.08), transparent 70%)` }}
-            animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-            transition={{ duration: 8, repeat: Infinity }}
-          />
-
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center relative z-10">
             <FadeIn className="flex justify-center">
               <AnimatedProfileImage size="lg" />
             </FadeIn>
             <FadeIn delay={0.2}>
-              <motion.h1
-                className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6 tracking-tight"
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              >
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 tracking-tightest">
                 {t("about.title")} <span className="gradient-text">{siteConfig.name}</span>
-              </motion.h1>
-              <motion.p
-                className="text-muted-foreground mb-4 text-base leading-relaxed"
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
-              >
+              </h1>
+              <p className="text-muted-foreground mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">
                 {t("hero.bio")}
-              </motion.p>
-              <motion.p
-                className="text-muted-foreground text-sm leading-relaxed"
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
-              >
+              </p>
+              <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                 {t("about.intro")}
-              </motion.p>
+              </p>
             </FadeIn>
           </div>
         </section>
 
-        <section className="py-12 bg-card/30">
-          <StaggerContainer className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <section className="py-8 sm:py-12 bg-muted/30">
+          <StaggerContainer className="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
             {statKeys.map((s) => (
               <StaggerItem key={s.key}>
-                <motion.div whileHover={{ y: -4, scale: 1.02 }} whileTap={{ scale: 0.97 }} className="text-center p-6 rounded-2xl glass cursor-default">
-                  <motion.p
-                    className="text-3xl md:text-4xl font-display font-bold gradient-text"
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 200 }}
-                  >
-                    {s.value}
-                  </motion.p>
-                  <p className="text-sm text-muted-foreground mt-2">{t(s.key)}</p>
-                </motion.div>
+                <div className="text-center p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-border/50 bg-card/50">
+                  <p className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text">{s.value}</p>
+                  <p className="text-[10px] sm:text-sm text-muted-foreground mt-1 sm:mt-2">{t(s.key)}</p>
+                </div>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -91,42 +67,36 @@ const AboutPage = () => {
         <section className="section-padding">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
             <SectionHeading title={t("about.journey")} />
-            <div className="relative border-l-2 border-primary/30 pl-8 space-y-10">
+            <div className="relative border-l-2 border-border pl-6 sm:pl-8 space-y-8 sm:space-y-10">
               {timelineKeys.map((tl, i) => (
-                <FadeIn key={tl.year} delay={i * 0.1} className="relative">
+                <FadeIn key={tl.year} delay={i * 0.08} className="relative">
                   <motion.div
-                    className="absolute -left-[2.55rem] top-0 h-5 w-5 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center"
-                    whileInView={{ scale: [0.5, 1.2, 1] }}
+                    className="absolute -left-[1.85rem] sm:-left-[2.55rem] top-0 h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center"
+                    whileInView={{ scale: [0.5, 1.1, 1] }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
+                    transition={{ delay: i * 0.08 }}
                   >
-                    <div className="h-2 w-2 rounded-full bg-primary" />
+                    <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-primary" />
                   </motion.div>
-                  <p className="text-xs text-primary font-semibold mb-1 font-display">{tl.year}</p>
-                  <h3 className="font-display font-semibold">{t(tl.titleKey)}</h3>
-                  <p className="text-sm text-muted-foreground">{t(tl.descKey)}</p>
+                  <p className="text-[10px] sm:text-xs text-primary font-semibold mb-0.5 sm:mb-1">{tl.year}</p>
+                  <h3 className="font-semibold text-sm sm:text-base">{t(tl.titleKey)}</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{t(tl.descKey)}</p>
                 </FadeIn>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="section-padding bg-card/30">
+        <section className="section-padding bg-muted/30">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
             <SectionHeading title={t("about.whyMe")} />
-            <StaggerContainer className="space-y-3">
+            <StaggerContainer className="space-y-2 sm:space-y-3">
               {reasonKeys.map((key) => (
                 <StaggerItem key={key}>
-                  <motion.div
-                    whileHover={{ x: 6 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="flex items-center gap-3 p-4 rounded-xl glass cursor-default group"
-                  >
-                    <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.5 }}>
-                      <CheckCircle className="h-5 w-5 text-primary shrink-0 group-hover:text-accent transition-colors" />
-                    </motion.div>
-                    <span className="text-sm">{t(key)}</span>
-                  </motion.div>
+                  <div className="flex items-center gap-3 p-3 sm:p-4 rounded-lg sm:rounded-xl border border-border/50 bg-card/50">
+                    <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary shrink-0" />
+                    <span className="text-xs sm:text-sm">{t(key)}</span>
+                  </div>
                 </StaggerItem>
               ))}
             </StaggerContainer>
